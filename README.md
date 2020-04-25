@@ -1,4 +1,5 @@
 # covid19-live
+Access updated information about the coronavirus disease. Data is sourced from https://corona.lmao.ninja/ 
 
 ## Project setup
 ```
