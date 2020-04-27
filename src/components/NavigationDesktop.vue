@@ -1,6 +1,6 @@
 <template>
     <div>
-        <md-toolbar class="showHide">
+        <md-toolbar class="md-elevation-2 md-elevation-2 showHide">
             <h3 class="md-title" style="flex: 1">Covid19 World Confirmed cases</h3>
             <div class="md-toolbar-section-end">
                 <md-button class="md-icon-button">
@@ -153,6 +153,14 @@
 
 <style lang="scss" scoped>
 .showHide { display: none; } // Toggle toolbar and scrollbar display on desktop
+
+.md-content {
+    max-width: 200px;
+    max-height: 100vh;
+    overflow: auto;
+    display: block;
+    // padding: 16px;
+}
 
 .main-nav {
     width: 230px;
