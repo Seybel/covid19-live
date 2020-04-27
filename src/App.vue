@@ -1,46 +1,23 @@
 <template>
   <div id="app" class="container">
-    <Toolbar />
-    <div class="container-wrapper md-layout-row">
-        <Scrollbar />
-        <div class="world-details">
-          <ul>
-            <li><span class="wd-details-title">Confirmed</span></li>
-            <li><span class="wd-details-text">987,654</span></li>
-          </ul>
-          <ul>
-            <li><span class="wd-details-title">Recovered</span></li>
-            <li><span class="wd-details-text">87,543</span></li>
-          </ul>
-          <ul>
-            <li><span class="wd-details-title">Deaths</span></li>
-            <li><span class="wd-details-text">7,543</span></li>
-          </ul>
-        </div>
-      <router-view/>
-    </div>
-
+    <NavigationDesktop />
+    <NavigationMobile />
+    <router-view/>
   </div>
 </template>
 
 <script>
-import Toolbar from '@/components/Toolbar'
-import Scrollbar from '@/components/Scrollbar'
+import NavigationDesktop from '@/components/NavigationDesktop'
+import NavigationMobile from '@/components/NavigationMobile'
 
 export default {
   components: {
-    Toolbar,
-    Scrollbar
+    NavigationDesktop,
+    NavigationMobile
   }
 }
 </script>
 <style lang="scss" scoped>
- .md-content {
-    max-width: 400px;
-    max-height: 200px;
-    overflow: auto;
-  }
-
 .world-details {
     top: 10%;
     position: fixed;
@@ -85,10 +62,9 @@ a:not(.md-button) {
     transition-property: color,background-color,opacity;
 }
 
-// MOBILE STYLE
-  @media (min-width: 981px) {
-    .wd-details {
+@media (min-width: 981px) {
+  .world-details {
     display: block;
-    }
   }
+}
 </style>
