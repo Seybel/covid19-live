@@ -2,7 +2,7 @@
     <div class="md-toolbar main-header md-theme-default md-elevation-2 md-elevation-2">
         <div class="md-toolbar-row">
             <div class="md-toolbar-section-start">
-                <md-button class="md-button md-icon-button menu md-theme-default">
+                <md-button class="md-button md-icon-button menu md-theme-default" @click="toggleMenu" v-if="!menuVisible">
                     <div class="md-ripple">
                         <div class="md-button-content">
                             <i class="md-icon md-icon-font md-theme-default">menu</i>
@@ -24,6 +24,13 @@
     </div>
 </template>
 
+<script>
+export default {
+//   data: () => ({
+//     showNavigation: false
+//   })
+}
+</script>
 <style scoped>
     .main-header {
         margin: auto;
