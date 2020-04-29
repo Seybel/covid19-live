@@ -14,135 +14,14 @@
         </md-toolbar>
         <md-drawer :md-active.sync="showNavigation" class="md-fixed showHideMobile" md-swipeable>
             <div class="main-nav-drawer-content">
-                <div class="main-nav-content">
+                <div v-for="(covidDataItem, index) in covidData" :key="index" class="main-nav-content">
                     <div class="country-details">
                         <md-list>
                             <md-list-item to="#">
                                 <div class="md-list-item-text">
-                                    <span><span class="cd-no">32,345 </span><span class="cd-name">USA</span></span>
-                                    <span>Deaths: 123</span>
-                                    <span>Recovered: 23</span>
-                                </div>
-                            </md-list-item>
-                        </md-list>
-                        </div>
-                    <div class="country-details">
-                        <md-list>
-                            <md-list-item to="#">
-                                <div class="md-list-item-text">
-                                    <span><span class="cd-no">12,345 </span><span class="cd-name">USA</span></span>
-                                    <span>Deaths: 123</span>
-                                    <span>Recovered: 23</span>
-                                </div>
-                            </md-list-item>
-                        </md-list>
-                    </div>
-                    <div class="country-details">
-                        <md-list>
-                            <md-list-item to="#">
-                                <div class="md-list-item-text">
-                                    <span><span class="cd-no">12,345 </span><span class="cd-name">USA</span></span>
-                                    <span>Deaths: 123</span>
-                                    <span>Recovered: 23</span>
-                                </div>
-                            </md-list-item>
-                        </md-list>
-                    </div>
-                    <div class="country-details">
-                        <md-list>
-                            <md-list-item to="#">
-                                <div class="md-list-item-text">
-                                    <span><span class="cd-no">12,345 </span><span class="cd-name">USA</span></span>
-                                    <span>Deaths: 123</span>
-                                    <span>Recovered: 23</span>
-                                </div>
-                            </md-list-item>
-                        </md-list>
-                    </div>
-                    <div class="country-details">
-                        <md-list>
-                            <md-list-item to="#">
-                                <div class="md-list-item-text">
-                                    <span><span class="cd-no">12,345 </span><span class="cd-name">USA</span></span>
-                                    <span>Deaths: 123</span>
-                                    <span>Recovered: 23</span>
-                                </div>
-                            </md-list-item>
-                        </md-list>
-                    </div>
-                    <div class="country-details">
-                        <md-list>
-                            <md-list-item to="#">
-                                <div class="md-list-item-text">
-                                    <span><span class="cd-no">12,345 </span><span class="cd-name">USA</span></span>
-                                    <span>Deaths: 123</span>
-                                    <span>Recovered: 23</span>
-                                </div>
-                            </md-list-item>
-                        </md-list>
-                    </div>
-                    <div class="country-details">
-                        <md-list>
-                            <md-list-item to="#">
-                                <div class="md-list-item-text">
-                                    <span><span class="cd-no">12,345 </span><span class="cd-name">USA</span></span>
-                                    <span>Deaths: 123</span>
-                                    <span>Recovered: 23</span>
-                                </div>
-                            </md-list-item>
-                        </md-list>
-                    </div>
-                    <div class="country-details">
-                        <md-list>
-                            <md-list-item to="#">
-                                <div class="md-list-item-text">
-                                    <span><span class="cd-no">12,345 </span><span class="cd-name">USA</span></span>
-                                    <span>Deaths: 123</span>
-                                    <span>Recovered: 23</span>
-                                </div>
-                            </md-list-item>
-                        </md-list>
-                    </div>
-                    <div class="country-details">
-                        <md-list>
-                            <md-list-item to="#">
-                                <div class="md-list-item-text">
-                                    <span><span class="cd-no">12,345 </span><span class="cd-name">USA</span></span>
-                                    <span>Deaths: 123</span>
-                                    <span>Recovered: 23</span>
-                                </div>
-                            </md-list-item>
-                        </md-list>
-                    </div>
-                    <div class="country-details">
-                        <md-list>
-                            <md-list-item to="#">
-                                <div class="md-list-item-text">
-                                    <span><span class="cd-no">12,345 </span><span class="cd-name">USA</span></span>
-                                    <span>Deaths: 123</span>
-                                    <span>Recovered: 23</span>
-                                </div>
-                            </md-list-item>
-                        </md-list>
-                    </div>
-                    <div class="country-details">
-                        <md-list>
-                            <md-list-item to="#">
-                                <div class="md-list-item-text">
-                                    <span><span class="cd-no">12,345 </span><span class="cd-name">USA</span></span>
-                                    <span>Deaths: 123</span>
-                                    <span>Recovered: 23</span>
-                                </div>
-                            </md-list-item>
-                        </md-list>
-                    </div>
-                    <div class="country-details">
-                        <md-list>
-                            <md-list-item to="#">
-                                <div class="md-list-item-text">
-                                    <span><span class="cd-no">12,345 </span><span class="cd-name">USA</span></span>
-                                    <span>Deaths: 123</span>
-                                    <span>Recovered: 23</span>
+                                    <span><span class="cd-no">{{ covidDataItem.cases }} </span><span class="cd-name">{{ covidDataItem.country }}</span></span>
+                                    <span>Deaths: {{ covidDataItem.deaths }}</span>
+                                    <span>Recovered: {{ covidDataItem.recovered }}</span>
                                 </div>
                             </md-list-item>
                         </md-list>
@@ -154,10 +33,17 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   data: () => ({
     showNavigation: false
-  })
+  }),
+  computed: {
+    ...mapState([
+      'covidData'
+    ])
+  }
 }
 </script>
 
