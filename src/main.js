@@ -4,15 +4,16 @@ import Vue from 'vue'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default-dark.css'
-// import '.assets/scss/index.scss'
+
+import App from './App.vue'
+import router from './router'
+import store from './store'
 
 // Importing components for leaflet map
 import { Icon } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import './assets/scss/index.scss'
 
 Vue.use(VueMaterial)
 
