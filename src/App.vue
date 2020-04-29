@@ -19,18 +19,19 @@
         </div>
       <router-view/>
     </div>
-
+    <Map />
   </div>
 </template>
 
 <script>
 import Toolbar from '@/components/Toolbar'
 import Scrollbar from '@/components/Scrollbar'
-
+import Map from '@/components/Map'
 export default {
   components: {
     Toolbar,
-    Scrollbar
+    Scrollbar,
+    Map
   }
 }
 </script>

@@ -1,4 +1,3 @@
-// import '@/scss/index.scss'
 import Vue from 'vue'
 
 // Importing individual components from Vue Material

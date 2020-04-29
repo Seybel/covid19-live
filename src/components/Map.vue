@@ -9,6 +9,7 @@
       <l-tile-layer
        :url="url">
       </l-tile-layer>
+      <!-- This tag is for the marker, the v-for is to iterate throught the lat and long and apply the marker  -->
       <l-circle-marker
        :key="index"
        v-for="(covidData,index) in covidDatas"
@@ -17,7 +18,7 @@
        :color="circle.color"
        :fillColor="circle.fillColor"
        :fillOpacity="circle.fillOpacity"
-       >
+      >
       </l-circle-marker>
     </l-map>
   </div>
@@ -34,7 +35,7 @@ export default {
   },
   data () {
     return {
-      covidDatas: [],
+      // covidDatas: [],
       zoom: 5,
       center: L.latLng(48.019324, 18.672841),
       url: 'https://tile.thunderforest.com/transport-dark/{z}/{x}/{y}.png?apikey=8c9f8b88b0db49398d680581331e4670',
@@ -49,35 +50,17 @@ export default {
       }
     }
   },
-  //  Temporarily fetching data from covid api for testing purposes
-  mounted () {
-    fetch('https://covid19-data.p.rapidapi.com/all', {
-      method: 'GET',
-      headers: {
-        'x-rapidapi-host': 'covid19-data.p.rapidapi.com',
-        'x-rapidapi-key': 'ee21d115b2msh8d4d8cc339189b9p1a2d46jsne5f5fca1707d'
-      }
-    })
-      .then(response => {
-        return response.json()
-      })
-      .then((jsonData) => {
-        this.covidDatas = jsonData
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  },
   methods: {
     zoomUpdate (zoom) {
       this.currentZoom = zoom
     },
     centerUpdate (center) {
       this.currentCenter = center
-    },
-    latLng (lat, lng) {
-      return L.latLng(lat, lng)
     }
+    // Funtion to get the latitude and longitude
+    // latLng (lat, lng) {
+    //   return L.latLng(lat, lng)
+    // }
   }
 }
 </script>
