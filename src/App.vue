@@ -2,18 +2,22 @@
   <div id="app" class="container">
     <NavigationDesktop />
     <NavigationMobile />
+    <Map />
     <router-view/>
   </div>
 </template>
 
 <script>
+
 import NavigationDesktop from '@/components/NavigationDesktop'
 import NavigationMobile from '@/components/NavigationMobile'
+import Map from '@/components/Map'
 
 export default {
   components: {
     NavigationDesktop,
-    NavigationMobile
+    NavigationMobile,
+    Map
   }
 }
 </script>
