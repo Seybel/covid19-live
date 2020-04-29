@@ -2,22 +2,29 @@
   <div id="app" class="container">
     <NavigationDesktop />
     <NavigationMobile />
-    <Map />
+    <!-- <Map /> -->
     <router-view/>
   </div>
 </template>
 
 <script>
-
 import NavigationDesktop from '@/components/NavigationDesktop'
 import NavigationMobile from '@/components/NavigationMobile'
-import Map from '@/components/Map'
+// import Map from '@/components/Map'
 
 export default {
+  // methods: {
+  //   ...mapActions([
+  //     'loadData'
+  //   ])
+  // },
+  created () {
+    this.$store.dispatch('loadData')
+  },
   components: {
     NavigationDesktop,
-    NavigationMobile,
-    Map
+    NavigationMobile
+    // Map
   }
 }
 </script>

@@ -9,8 +9,8 @@
       <l-tile-layer
        :url="url">
       </l-tile-layer>
-      <!-- This tag is for the marker, the v-for is to iterate throught the lat and long and apply the marker  -->
-      <l-circle-marker
+      <!-- This tag is for the marker, the v-for is to iterate through the lat and long and apply the marker  -->
+      <!-- <l-circle-marker
        :key="index"
        v-for="(covidData,index) in covidDatas"
        :lat-lng="latLng(covidData.latitude, covidData.longitude)"
@@ -19,19 +19,19 @@
        :fillColor="circle.fillColor"
        :fillOpacity="circle.fillOpacity"
       >
-      </l-circle-marker>
+      </l-circle-marker> -->
     </l-map>
   </div>
 </template>
 
 <script>
 import L from 'leaflet'
-import { LMap, LTileLayer, LCircleMarker } from 'vue2-leaflet'
+import { LMap, LTileLayer } from 'vue2-leaflet'
 export default {
   components: {
     LMap,
-    LTileLayer,
-    LCircleMarker
+    LTileLayer
+    // LCircleMarker
   },
   data () {
     return {
@@ -72,5 +72,7 @@ export default {
     margin-top: 66px;
     margin-left: 233px;
     position: sticky;
+
+    // LCircleMarker
   }
 </style>
