@@ -1,3 +1,4 @@
 export default {
-  covidData: []
+  covidData: [],
+  totalConfirmedData: []
 }
