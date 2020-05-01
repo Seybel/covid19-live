@@ -14,14 +14,14 @@
         </md-toolbar>
         <md-drawer :md-active.sync="showNavigation" class="md-fixed showHideMobile" md-swipeable>
             <div class="main-nav-drawer-content">
-                <div v-for="(covidDataItem, index) in covidData" :key="index" class="main-nav-content">
+                <div v-for="(getSortedDataItem, index) in getSortedData" :key="index" class="main-nav-content">
                     <div class="country-details">
                         <md-list>
                             <md-list-item to="#">
                                 <div class="md-list-item-text">
-                                    <span><span class="cd-no">{{ covidDataItem.cases }} </span><span class="cd-name">{{ covidDataItem.country }}</span></span>
-                                    <span>Deaths: {{ covidDataItem.deaths }}</span>
-                                    <span>Recovered: {{ covidDataItem.recovered }}</span>
+                                    <span><span class="cd-no">{{ getSortedDataItem.cases }} </span><span class="cd-name">{{ getSortedDataItem.country }}</span></span>
+                                    <span>Deaths: {{ getSortedDataItem.deaths }}</span>
+                                    <span>Recovered: {{ getSortedDataItem.recovered }}</span>
                                 </div>
                             </md-list-item>
                         </md-list>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   data: () => ({
@@ -42,6 +42,9 @@ export default {
   computed: {
     ...mapState([
       'covidData'
+    ]),
+    ...mapGetters([
+      'getSortedData'
     ])
   }
 }
