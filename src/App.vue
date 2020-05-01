@@ -1,7 +1,8 @@
 <template>
-  <div id="app" class="container">
+  <div id="app" class="container md-layout-row">
     <NavigationDesktop />
     <NavigationMobile />
+    <WorldDetails />
     <!-- <Map /> -->
     <router-view/>
   </div>
@@ -10,6 +11,7 @@
 <script>
 import NavigationDesktop from '@/components/NavigationDesktop'
 import NavigationMobile from '@/components/NavigationMobile'
+import WorldDetails from '@/components/WorldDetails'
 // import Map from '@/components/Map'
 
 export default {
@@ -20,50 +22,17 @@ export default {
   // },
   created () {
     this.$store.dispatch('loadData')
+    this.$store.dispatch('loadTotalData')
   },
   components: {
     NavigationDesktop,
-    NavigationMobile
+    NavigationMobile,
+    WorldDetails
     // Map
   }
 }
 </script>
 <style lang="scss" scoped>
-.world-details {
-    top: 10%;
-    position: fixed;
-    right: 10px;
-    z-index: 16;
-    border-left: 1px solid #e0e0e0;
-    padding-right: 15px;
-    max-width: 250px;
-
-    ul {
-      list-style: none;
-      padding-left: 20px;
-      padding-right: 20px;
-      margin: 5px 0;
-
-      li {
-          color: #7d7d7d;
-
-          span.wd-details-title {
-            color: #fff;
-            font-size: 28px;
-            font-weight: 700;
-            line-height: 40px;
-          }
-
-          span.wd-details-text {
-            color: #fff;
-            font-size: 20px;
-            font-weight: 500;
-            line-height: 32px;
-          }
-      }
-    }
-}
-
 a:not(.md-button) {
     text-decoration: none;
 }
