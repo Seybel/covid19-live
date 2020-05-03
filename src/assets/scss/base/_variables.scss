@@ -1,5 +1,45 @@
 // * GLOBAL STYLES * //
-
-// fonts
-
 // colors
+$white: #FFFFFF;
+$black:#000;
+$country-cases:#d32f2f;
+$recovered:#6ba476;
+$wd-details:#7d7d7d;
+$wd-details-title:#b9b9b9;
+// Font-sizes
+$xx-small: 9px;
+$small: 11px;
+$xx-regular: 12px;
+$regular: 16px;
+$big: 18px;
+$xx-big: 24px;
+$extra-big: 36px; 
+
+//Font-Styles
+$bold-font: bold;
+$italic: italic;
+$normal-font: normal;
+$oblique: oblique;
+$inherit: inherit;
+
+//Font-Weights
+$extra-light: 100;
+$thin: 200;
+$light: 300;
+$regular: 400;
+$medium: 500;
+$xx-bold: 600;
+$semi-bold: 700;
+$extra-bold: 800;
+$deep: 900;
+$bold: bold;
+
+//DISPLAY
+$display-block: block;
+$display-inline-block:inline-block;
+$display-flex: flex;
+
+//position
+$relative:relative;
+$absolute:absolute;
+$fixed: fixed;

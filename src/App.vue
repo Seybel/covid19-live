@@ -3,7 +3,7 @@
     <NavigationDesktop />
     <NavigationMobile />
     <WorldDetails />
-    <!-- <Map /> -->
+    <Map />
     <router-view/>
   </div>
 </template>
@@ -12,7 +12,7 @@
 import NavigationDesktop from '@/components/NavigationDesktop'
 import NavigationMobile from '@/components/NavigationMobile'
 import WorldDetails from '@/components/WorldDetails'
-// import Map from '@/components/Map'
+import Map from '@/components/Map'
 
 export default {
   // methods: {
@@ -27,8 +27,8 @@ export default {
   components: {
     NavigationDesktop,
     NavigationMobile,
-    WorldDetails
-    // Map
+    WorldDetails,
+    Map
   }
 }
 </script>
