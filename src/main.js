@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-// Importing individual components from Vue Material
+// Importing Vue Material
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default-dark.css'
@@ -12,6 +12,9 @@ import store from './store'
 // Importing components for leaflet map
 import { Icon } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
+
+// Importing echarts plugin
+import '@/plugins/apexcharts'
 
 import './assets/scss/index.scss'
 
