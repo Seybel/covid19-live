@@ -9,7 +9,6 @@
         >
         <l-tile-layer
         :url="url"
-        :attribution='attribution'
         >
         </l-tile-layer>
         <!-- This tag is for the marker, the v-for is to iterate through the lat and long and apply the marker  -->
@@ -40,12 +39,11 @@ export default {
   },
   data () {
     return {
-      zoom: 5,
+      zoom: 4,
       center: L.latLng(48.019324, 18.672841),
-      url: 'https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?access_token=' +
-      'pk.eyJ1IjoidG9sdW1lbnRvIiwiYSI6ImNrOW1zYXlnczAybTQzcG0xbWF3ZWt0bWwifQ.3w3Af5QZ4zQeTvbt_ekwsg',
-      attribution: '<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      currentZoom: 5,
+      url: 'https://api.mapbox.com/styles/v1/tolumento/ck9t3fgda04951ipho5ohv6dr/tiles/256/{z}/{x}/{y}@2x?access_token=p' +
+      'k.eyJ1IjoidG9sdW1lbnRvIiwiYSI6ImNrOW1zYXlnczAybTQzcG0xbWF3ZWt0bWwifQ.3w3Af5QZ4zQeTvbt_ekwsg',
+      currentZoom: 4,
       currentCenter: L.latLng(48.019324, 18.672841),
       marker: L.latLng(47.413220, -1.219482),
       circle: {
@@ -57,7 +55,7 @@ export default {
       }
     }
   },
-  // prevents the gridlines to appear on the map
+  // prevents the gridlines from appearing on the map
   mounted () {
     (function () {
       if (!L || !L.GridLayer || !L.GridLayer.prototype) return
@@ -94,10 +92,11 @@ export default {
 
 <style lang="scss">
   .map{
-    max-width: 63%;
+    max-width: 64.8%;
     height: 350px;
     margin-top: 5px;
-    margin-left: 320px;
+    margin-left: 310px;
+    transform: none;
     // position: sticky;
     z-index: 1;
   }

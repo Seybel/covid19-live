@@ -54,29 +54,29 @@ export default {
     ])
   },
 
-  methods: {
-    searchFilter () {
-      document.getElementById('search-input').oninput = () => {
-        var matcher = new RegExp(document.getElementById('search-input').value, 'gi')
-        for (var i = 0; i < document.getElementsByClassName('country-details').length; i++) {
-          if (matcher.test(document.getElementsByClassName('cd-name')[i].innerHTML)) {
-            document.getElementsByClassName('country-details')[i].style.display = 'flex'
-          } else {
-            document.getElementsByClassName('country-details')[i].style.display = 'none'
-          }
-        }
-      }
-      // Prevent user from pressing enter while searching
-      window.addEventListener('keydown', (e) => {
-        if (e.keyIdentifier === 'U+000A' || e.keyIdentifier === 'Enter' || e.keyCode === 13) {
-          if (e.target.nodeName === 'INPUT' && e.target.type === 'text') {
-            e.preventDefault()
-            return false
-          }
-        }
-      }, true)
-    }
-  },
+  // methods: {
+  //   searchFilter () {
+  //     document.getElementById('search-input').oninput = () => {
+  //       var matcher = new RegExp(document.getElementById('search-input').value, 'gi')
+  //       for (var i = 0; i < document.getElementsByClassName('country-details').length; i++) {
+  //         if (matcher.test(document.getElementsByClassName('cd-name')[i].innerHTML)) {
+  //           document.getElementsByClassName('country-details')[i].style.display = 'flex'
+  //         } else {
+  //           document.getElementsByClassName('country-details')[i].style.display = 'none'
+  //         }
+  //       }
+  //     }
+  //     // Prevent user from pressing enter while searching
+  //     window.addEventListener('keydown', (e) => {
+  //       if (e.keyIdentifier === 'U+000A' || e.keyIdentifier === 'Enter' || e.keyCode === 13) {
+  //         if (e.target.nodeName === 'INPUT' && e.target.type === 'text') {
+  //           e.preventDefault()
+  //           return false
+  //         }
+  //       }
+  //     }, true)
+  //   }
+  // },
 
   mounted () {
     const input = document.getElementById('search-input')
