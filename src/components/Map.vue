@@ -1,7 +1,7 @@
 <template>
   <div class="md-layout gutter">
     <div class=" md-layout-item map">
-      <l-map
+    <l-map
         :zoom="zoom"
         :center="center"
         @update:center="centerUpdate"
@@ -32,15 +32,10 @@ import L from 'leaflet'
 import { LMap, LTileLayer, LCircleMarker } from 'vue2-leaflet'
 import { mapState } from 'vuex'
 export default {
-  components: {
-    LMap,
-    LTileLayer,
-    LCircleMarker
-  },
   data () {
     return {
-      zoom: 4,
-      center: L.latLng(48.019324, 18.672841),
+      zoom: 2,
+      center: L.latLng(22.593726, 48.333649),
       url: 'https://api.mapbox.com/styles/v1/tolumento/ck9t3fgda04951ipho5ohv6dr/tiles/256/{z}/{x}/{y}@2x?access_token=p' +
       'k.eyJ1IjoidG9sdW1lbnRvIiwiYSI6ImNrOW1zYXlnczAybTQzcG0xbWF3ZWt0bWwifQ.3w3Af5QZ4zQeTvbt_ekwsg',
       currentZoom: 4,
@@ -86,15 +81,23 @@ export default {
     latLng (lat, lng) {
       return L.latLng(lat, lng)
     }
+  },
+  components: {
+    LMap,
+    LTileLayer,
+    LCircleMarker
   }
 }
 </script>
 
 <style lang="scss">
-  .map{
+  .map {
+    background-color: #333;
     max-width: 64.8%;
     height: 350px;
-    margin-top: 5px;
+    // margin-top: 5px;
+    margin-top: 66px;
+    // padding-top: 24px;
     margin-left: 310px;
     transform: none;
     // position: sticky;
@@ -103,9 +106,16 @@ export default {
   // MOBILE STYLE
   @media screen and (max-width: 600px) {
     .map{
+      margin-top: 0px;
       margin-left: 5px;
       max-width: 97%;
       height: 250px;
+    }
+  }
+
+   @media screen and (min-width: 768px) and (max-width: 1199px) {
+    .map{
+      margin-top: 50px;
     }
   }
 </style>

@@ -4,7 +4,7 @@
     {{getData}}
     <md-toolbar class="md-elevation-2 md-elevation-2 showHide">
       <h3 class="md-title"  style="flex: 1">
-        <router-link to="/"> World Confirmed cases</router-link>
+        <router-link to="/">Covid19 World Confirmed cases</router-link>
       </h3>
       <div class="md-toolbar-section-end">
           <md-button class="md-icon-button">
@@ -72,7 +72,7 @@ export default {
       text-align: center;
       align-items: center;
       padding: 10px;
-      P {
+      p {
         border: 2px solid #7d7d7d;;
         width: 50%;
         height: 45px;
