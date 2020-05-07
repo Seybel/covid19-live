@@ -6,7 +6,7 @@ import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default-dark.css'
 
 import App from './App.vue'
-import router from './router'
+import router from './router/index.js'
 import store from './store'
 
 // Importing components for leaflet map

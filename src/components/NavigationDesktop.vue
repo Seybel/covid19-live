@@ -6,7 +6,7 @@
                     <div class="main-nav-level" v-for="(getSortedDataItem, index) in getSortedData" :key="index">
                         <div v-if="getSortedData.length" class="country-details">
                             <md-list id="countryList">
-                                <md-list-item to="#">
+                                <md-list-item to="/CountryDetails">
                                     <div class="md-list-item-text">
                                         <!-- <span>{{ getCases }}</span> -->
                                         <span><span class="cd-no">{{ getSortedDataItem.cases }} </span><span class="cd-name">{{ getSortedDataItem.country }}</span></span>
