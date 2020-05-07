@@ -1,5 +1,6 @@
 <template>
   <div id="app" class="container md-layout-row">
+    <Map />
     <!-- <NavigationDesktop />
     <NavigationMobile />
     <WorldDetails /> -->
