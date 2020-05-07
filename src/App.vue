@@ -1,18 +1,18 @@
 <template>
   <div id="app" class="container md-layout-row">
-    <NavigationDesktop />
+    <!-- <NavigationDesktop />
     <NavigationMobile />
-    <WorldDetails />
-    <Map />
+    <WorldDetails /> -->
     <router-view/>
+    <!-- <Map /> -->
   </div>
 </template>
 
 <script>
-import NavigationDesktop from '@/components/NavigationDesktop'
-import NavigationMobile from '@/components/NavigationMobile'
-import WorldDetails from '@/components/WorldDetails'
-import Map from '@/components/Map'
+// import NavigationDesktop from '@/components/NavigationDesktop'
+// import NavigationMobile from '@/components/NavigationMobile'
+// import WorldDetails from '@/components/WorldDetails'
+// import Map from '@/components/Map'
 
 export default {
   // methods: {
@@ -23,13 +23,13 @@ export default {
   created () {
     this.$store.dispatch('loadData')
     this.$store.dispatch('loadTotalData')
-  },
-  components: {
-    NavigationDesktop,
-    NavigationMobile,
-    WorldDetails,
-    Map
   }
+  // components: {
+  //   NavigationDesktop,
+  //   NavigationMobile,
+  //   WorldDetails,
+  //   Map
+  // }
 }
 </script>
 <style lang="scss" scoped>

@@ -1,9 +1,9 @@
 <template>
     <div>
         <md-toolbar class="md-elevation-2 md-elevation-2 showHide">
-            <h3 class="md-title" style="flex: 1">Covid19 World Confirmed cases</h3>
+            <h3 class="md-title"  style="flex: 1"><router-link to="/"> World Confirmed cases</router-link></h3>
             <div class="md-toolbar-section-end">
-                <form id="content">
+                <!-- <form id="content">
                   <input type="text"
                    @keypress="searchFilter()"
                    name="input"
@@ -12,7 +12,7 @@
                    autocomplete="off" />
                   <button type="reset" class="search" id="search-btn"></button>
                   <md-tooltip md-direction="bottom">Search</md-tooltip>
-                </form>
+                </form> -->
                 <md-button class="md-icon-button">
                   <md-icon><i class="fa fa-github"></i></md-icon>
                   <md-tooltip md-direction="bottom">Repo</md-tooltip>
@@ -25,7 +25,7 @@
                     <div class="main-nav-level" v-for="(getSortedDataItem, index) in getSortedData" :key="index">
                         <div v-if="getSortedData.length" class="country-details">
                             <md-list id="countryList">
-                                <md-list-item to="#">
+                                <md-list-item to="/CountryDetails">
                                     <div class="md-list-item-text">
                                         <!-- <span>{{ getCases }}</span> -->
                                         <span><span class="cd-no">{{ getSortedDataItem.cases }} </span><span class="cd-name">{{ getSortedDataItem.country }}</span></span>
@@ -55,40 +55,40 @@ export default {
   },
 
   // methods: {
-  //   searchFilter () {
-  //     document.getElementById('search-input').oninput = () => {
-  //       var matcher = new RegExp(document.getElementById('search-input').value, 'gi')
-  //       for (var i = 0; i < document.getElementsByClassName('country-details').length; i++) {
-  //         if (matcher.test(document.getElementsByClassName('cd-name')[i].innerHTML)) {
-  //           document.getElementsByClassName('country-details')[i].style.display = 'flex'
-  //         } else {
-  //           document.getElementsByClassName('country-details')[i].style.display = 'none'
-  //         }
-  //       }
-  //     }
-  //     // Prevent user from pressing enter while searching
-  //     window.addEventListener('keydown', (e) => {
-  //       if (e.keyIdentifier === 'U+000A' || e.keyIdentifier === 'Enter' || e.keyCode === 13) {
-  //         if (e.target.nodeName === 'INPUT' && e.target.type === 'text') {
-  //           e.preventDefault()
-  //           return false
-  //         }
-  //       }
-  //     }, true)
-  //   }
+  //   // searchFilter () {
+  //   //   document.getElementById('search-input').oninput = () => {
+  //   //     var matcher = new RegExp(document.getElementById('search-input').value, 'gi')
+  //   //     for (var i = 0; i < document.getElementsByClassName('country-details').length; i++) {
+  //   //       if (matcher.test(document.getElementsByClassName('cd-name')[i].innerHTML)) {
+  //   //         document.getElementsByClassName('country-details')[i].style.display = 'flex'
+  //   //       } else {
+  //   //         document.getElementsByClassName('country-details')[i].style.display = 'none'
+  //   //       }
+  //   //     }
+  //   //   }
+  //   //   // Prevent user from pressing enter while searching
+  //   //   window.addEventListener('keydown', (e) => {
+  //   //     if (e.keyIdentifier === 'U+000A' || e.keyIdentifier === 'Enter' || e.keyCode === 13) {
+  //   //       if (e.target.nodeName === 'INPUT' && e.target.type === 'text') {
+  //   //         e.preventDefault()
+  //   //         return false
+  //   //       }
+  //   //     }
+  //   //   }, true)
+  //   // }
   // },
 
-  mounted () {
-    const input = document.getElementById('search-input')
-    const searchBtn = document.getElementById('search-btn')
+  // mounted () {
+  //   const input = document.getElementById('search-input')
+  //   const searchBtn = document.getElementById('search-btn')
 
-    const expand = () => {
-      searchBtn.classList.toggle('close')
-      input.classList.toggle('square')
-    }
+  //   const expand = () => {
+  //     searchBtn.classList.toggle('close')
+  //     input.classList.toggle('square')
+  //   }
 
-    searchBtn.addEventListener('click', expand)
-  }
+  //   searchBtn.addEventListener('click', expand)
+  // }
 }
 </script>
 
@@ -97,6 +97,12 @@ export default {
 
 .md-toolbar {
   overflow-x: hidden;
+  .md-title a {
+    color: #fff;
+    &:hover{
+      text-decoration: none;
+    }
+  }
 }
 
 #content {

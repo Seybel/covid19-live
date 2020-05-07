@@ -4,7 +4,7 @@
             <md-button class="md-icon-button" @click="showNavigation = true">
                 <md-icon>menu</md-icon>
             </md-button>
-            <span class="md-title">Covid19 Live</span>
+            <span class="md-title"><router-link to="/"> Covid19 Live</router-link></span>
 
             <div class="md-toolbar-section-end">
                 <md-button class="md-icon-button">
@@ -17,7 +17,7 @@
                 <div v-for="(getSortedDataItem, index) in getSortedData" :key="index" class="main-nav-content">
                     <div class="country-details">
                         <md-list>
-                            <md-list-item to="#">
+                            <md-list-item to="/CountryDetails">
                                 <div class="md-list-item-text">
                                     <span><span class="cd-no">{{ getSortedDataItem.cases }} </span><span class="cd-name">{{ getSortedDataItem.country }}</span></span>
                                     <span>Deaths: {{ getSortedDataItem.deaths }}</span>
