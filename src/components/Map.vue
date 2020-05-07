@@ -91,12 +91,13 @@ export default {
 </script>
 
 <style lang="scss">
-  .map{
+  .map {
     background-color: #333;
-    // border: 1px solid #333;
     max-width: 64.8%;
     height: 350px;
-    margin-top: 5px;
+    // margin-top: 5px;
+    margin-top: 66px;
+    // padding-top: 24px;
     margin-left: 310px;
     transform: none;
     // position: sticky;
@@ -105,9 +106,16 @@ export default {
   // MOBILE STYLE
   @media screen and (max-width: 600px) {
     .map{
+      margin-top: 0px;
       margin-left: 5px;
       max-width: 97%;
       height: 250px;
+    }
+  }
+
+   @media screen and (min-width: 768px) and (max-width: 1199px) {
+    .map{
+      margin-top: 50px;
     }
   }
 </style>

@@ -1,14 +1,5 @@
 <template>
     <div>
-        <md-toolbar class="md-elevation-2 md-elevation-2 showHide">
-            <h3 class="md-title" style="flex: 1">Covid19 World Confirmed cases</h3>
-            <div class="md-toolbar-section-end">
-                <md-button class="md-icon-button">
-                  <md-icon><i class="fa fa-github"></i></md-icon>
-                  <md-tooltip md-direction="bottom">Repo</md-tooltip>
-                </md-button>
-            </div>
-        </md-toolbar>
         <div class="main-nav-container md-xsmall-hide">
             <md-content class="main-nav md-scrollbar md-theme-default">
                 <div class="main-nav-content">
@@ -50,22 +41,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.showHide { display: none; } // Toggle toolbar and scrollbar display on desktop
-
-.md-toolbar {
-  overflow-x: hidden;
-}
-
 .md-content {
     max-width: 308px;
     max-height: 100vh;
     overflow: auto;
     display: block;
     // padding: 16px;
-}
-
-.md-scrollbar {
-  position: absolute;
 }
 
 .main-nav {
@@ -113,12 +94,5 @@ export default {
       font-weight: 400;
       line-height: 19px;
   }
-}
-
-// MOBILE STYLE
-
-/* Desktop, Mobile */
-@media screen and (min-width: 768px) {
-  .showHide  { display: flex; }
 }
 </style>

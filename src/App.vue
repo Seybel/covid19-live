@@ -1,5 +1,6 @@
 <template>
   <div id="app" class="container md-layout-row">
+    <ToolbarDesktop />
     <NavigationDesktop />
     <NavigationMobile />
     <WorldDetails />
@@ -10,6 +11,7 @@
 </template>
 
 <script>
+import ToolbarDesktop from '@/components/ToolbarDesktop'
 import NavigationDesktop from '@/components/NavigationDesktop'
 import NavigationMobile from '@/components/NavigationMobile'
 import WorldDetails from '@/components/WorldDetails'
@@ -27,6 +29,7 @@ export default {
     this.$store.dispatch('loadTotalData')
   },
   components: {
+    ToolbarDesktop,
     NavigationDesktop,
     NavigationMobile,
     WorldDetails,

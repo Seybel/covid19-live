@@ -25,10 +25,11 @@ export default {
 <style lang="scss" scoped>
 .showHide { display: none; } // Toggle
 .world-details {
-  margin-top: 5px;
   position: absolute;
+  margin-top: 55px;
+  padding-top: 24px;
   right: 35px;
-  z-index: 16;
+  // z-index: 16;
   // border-left: 1px solid #333;
   // padding-right: 10px;
   max-width: 400px;
