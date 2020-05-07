@@ -72,7 +72,7 @@ export default {
       text-align: center;
       align-items: center;
       padding: 10px;
-      P {
+      p {
         border: 2px solid #7d7d7d;;
         width: 50%;
         height: 45px;

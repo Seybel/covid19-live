@@ -1,20 +1,10 @@
 <template>
   <div id="app" class="container md-layout-row">
-    <Map />
-    <!-- <NavigationDesktop />
-    <NavigationMobile />
-    <WorldDetails /> -->
     <router-view/>
-    <!-- <Map /> -->
   </div>
 </template>
 
 <script>
-// import NavigationDesktop from '@/components/NavigationDesktop'
-// import NavigationMobile from '@/components/NavigationMobile'
-// import WorldDetails from '@/components/WorldDetails'
-// import Map from '@/components/Map'
-
 export default {
   // methods: {
   //   ...mapActions([
@@ -25,12 +15,6 @@ export default {
     this.$store.dispatch('loadData')
     this.$store.dispatch('loadTotalData')
   }
-  // components: {
-  //   NavigationDesktop,
-  //   NavigationMobile,
-  //   WorldDetails,
-  //   Map
-  // }
 }
 </script>
 <style lang="scss" scoped>
