@@ -10,10 +10,10 @@
             </div>
             <div class="md-layout-item">
                 <div class="chart-inner-wrapper2">
-                    <apexchart width="394" height="300" type="bar" :options="options" :series="seriesB"></apexchart>
+                    <apexchart width="394" height="300" type="radar" :options="options" :series="seriesB"></apexchart>
                 </div>
             </div>
-             <div class="md-layout-item">
+             <!-- <div class="md-layout-item">
                 <div class="chart-inner-wrapper3">
                     <apexchart width="394" height="300" type="line" :options="options" :series="seriesC"></apexchart>
                 </div>
@@ -22,13 +22,12 @@
                 <div class="chart-inner-wrapper4">
                     <apexchart width="394" height="300" type="bar" :options="options" :series="seriesD"></apexchart>
                 </div>
-            </div>
+            </div> -->
         </div>
 </template>
 
 <script>
 import axios from 'axios'
-// import VueApexCharts from 'vue-apexcharts'
 
 export default {
   data: () => ({
@@ -47,6 +46,21 @@ export default {
       },
       tooltip: {
         theme: 'dark'
+      },
+      markers: {
+        size: 5
+      },
+      // stroke: {
+      //   curve: 'smooth'
+      // },
+      legend: {
+        horizontalAlign: 'center',
+        fontSize: '14px',
+        fontFamily: 'Helvetica, Arial, sans-serif',
+        offsetX: 20,
+        labels: {
+          colors: '#7d7d7d'
+        }
       },
       xaxis: {
         categories: [],
@@ -84,29 +98,23 @@ export default {
           fontFamily: 'Helvetica, Arial, sans-serif'
         }
       },
-      colors: ['#00897b']
+      colors: ['#00897b', '#ff0000']
     },
-    seriesA: [{
-      name: 'Total Confirmed Cases',
-      data: []
-    }],
+    seriesA: [
+      {
+        name: 'Total Cases',
+        data: []
+      },
+      {
+        name: 'Total Deaths',
+        data: []
+      }
+    ],
     seriesB: [{
-      name: 'series-2',
-      data: [121, 141, 111, 131, 253, 161, 735]
-    }],
-    seriesC: [{
-      name: 'series-2',
-      data: [1211, 1141, 5051, 2331, 2653, 161, 335]
-    }],
-    seriesD: [{
-      name: 'series-2',
-      data: [121, 141, 111, 131, 253, 161, 735]
+      name: 'Total Recovered',
+      data: []
     }]
   }),
-
-  // mounted () {
-  //   this.updateC()
-  // },
 
   //   // const newData = this.xAxis[0].data.map(() => {
   //   //   return this.testing
@@ -142,13 +150,18 @@ export default {
         var allCasesType = sliced
         var CasesType = Object.values(allCasesType)
 
+        // Confirmed cases
         var t = CasesType.map((arr) => {
           return arr.confirmed
         })
         console.log(t)
-        this.testing2 = CasesType.map((arr) => {
+
+        // Deaths cases
+        var t2 = CasesType.map((arr) => {
           return arr.deaths
         })
+
+        // Recovered cases
         this.testing3 = CasesType.map((arr) => {
           return arr.recovered
         })
@@ -156,22 +169,10 @@ export default {
 
         // push series (confirmed)
         this.seriesA[0].data.push(...t)
+        // push series (deaths)
+        this.seriesA[1].data.push(...t2)
 
         // console.log(sliced)
-
-        // this.testing = sliced
-        // return sliced
-
-        // const characters = response.data
-        // const myTest = characters.map(characters => characters.timeline.cases)
-        // var testResult = Object.keys(myTest).map(function (key) {
-        //   return [Number(key), myTest[key]]
-        // })
-        // console.log(testResult)
-        // const myTest2 = characters.map(characters => characters.timeline.deaths)
-
-        // this.testing2 = myTest2
-        // this.testing3 = myTest3
       }).catch(error => {
         console.log(`API: ${error}`)
       })
