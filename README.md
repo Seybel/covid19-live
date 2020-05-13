@@ -1,5 +1,9 @@
 # covid19-live
-Access updated information about the coronavirus disease. Data is sourced from https://corona.lmao.ninja/ 
+Access updated information about the coronavirus disease. 
+## Data is sourced from:
+https://corona.lmao.ninja/
+
+https://covidapi.info/
 
 ## Project setup
 ```
