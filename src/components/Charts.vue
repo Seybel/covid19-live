@@ -1,26 +1,28 @@
 <template>
-    <div class="md-layout">
+    <div v-if="options.xaxis.categories.length" class="md-layout">
+        <!-- {{ testing.confirmed }} -->
         <!-- <div class="md-layout-row"> -->
             <div class="md-layout-item">
                 <div class="chart-inner-wrapper">
-                    <apexchart width="394" height="300" type="bar" :options="options" :series="seriesA"></apexchart>
+                  <!-- <button type="button" @click="updateC">Change data</button> -->
+                  <apexchart width="394" height="300" type="area" :options="options" :series="seriesA"></apexchart>
                 </div>
             </div>
             <div class="md-layout-item">
                 <div class="chart-inner-wrapper2">
-                    <apexchart width="394" height="300" type="bar" :options="options" :series="seriesB"></apexchart>
+                    <apexchart width="394" height="300" type="radar" :options="options" :series="seriesB"></apexchart>
                 </div>
             </div>
-             <div class="md-layout-item">
+             <!-- <div class="md-layout-item">
                 <div class="chart-inner-wrapper3">
-                    <apexchart width="394" height="300" type="line" :options="options" :series="seriesB"></apexchart>
+                    <apexchart width="394" height="300" type="line" :options="options" :series="seriesC"></apexchart>
                 </div>
             </div>
             <div class="md-layout-item">
                 <div class="chart-inner-wrapper4">
-                    <apexchart width="394" height="300" type="bar" :options="options" :series="seriesA"></apexchart>
+                    <apexchart width="394" height="300" type="bar" :options="options" :series="seriesD"></apexchart>
                 </div>
-            </div>
+            </div> -->
         </div>
 </template>
 
@@ -30,6 +32,8 @@ import axios from 'axios'
 export default {
   data: () => ({
     testing: [],
+    testing2: [],
+    testing3: [],
     options: {
       chart: {
         id: 'vuechart-example',
@@ -37,8 +41,29 @@ export default {
           show: false
         }
       },
+      dataLabels: {
+        enabled: false
+      },
+      tooltip: {
+        theme: 'dark'
+      },
+      markers: {
+        size: 5
+      },
+      // stroke: {
+      //   curve: 'smooth'
+      // },
+      legend: {
+        horizontalAlign: 'center',
+        fontSize: '14px',
+        fontFamily: 'Helvetica, Arial, sans-serif',
+        offsetX: 20,
+        labels: {
+          colors: '#7d7d7d'
+        }
+      },
       xaxis: {
-        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
+        categories: [],
         labels: {
           show: true,
           style: {
@@ -55,7 +80,7 @@ export default {
         }
       },
       title: {
-        text: 'Vuechart-example',
+        text: 'My Charts',
         style: {
           fontSize: '16px',
           fontWeight: 'bold',
@@ -63,25 +88,91 @@ export default {
           color: '#7d7d7d'
         }
       },
-      colors: ['#00897b']
+      noData: {
+        text: 'Loading...',
+        align: 'center',
+        verticalAlign: 'middle',
+        style: {
+          color: '#7d7d7d',
+          fontSize: '14px',
+          fontFamily: 'Helvetica, Arial, sans-serif'
+        }
+      },
+      colors: ['#00897b', '#ff0000']
     },
-    seriesA: [{
-      name: 'series-1',
-      data: [30, 40, 45, 50, 49, 60, 70, 91]
-    }],
+    seriesA: [
+      {
+        name: 'Total Cases',
+        data: []
+      },
+      {
+        name: 'Total Deaths',
+        data: []
+      }
+    ],
     seriesB: [{
-      name: 'series-2',
-      data: [30, 50, 65, 80, 99, 160, 170, 191]
+      name: 'Total Recovered',
+      data: []
     }]
   }),
 
+  //   // const newData = this.xAxis[0].data.map(() => {
+  //   //   return this.testing
+  //   // })
+  //   const newData = this.options.xaxis.categories.map(() => {
+  //     return this.testing
+  //   })
+  //   return newData
+  //   // In the same way, update the series option
+  //   // this.xAxis = [{
+  //   //   data: newData
+  //   // }]
+  // },
+
   mounted () {
-    axios.get('https://corona.lmao.ninja/v2/historical')
+    axios.get('https://covidapi.info/api/v1/global/count')
       .then(response => {
-        const characters = response.data
-        this.testing = characters
-        // display test results
-        // console.log(characters)
+        const myObj = response.data.result
+        const sliced = Object.keys(myObj).slice(-7).reduce((resultA, key) => {
+          resultA[key] = myObj[key]
+          return resultA
+        }, {})
+
+        // Separate dates from object
+        var allDates = sliced
+        var reportDates = Object.keys(allDates)
+        // console.log(reportDates)
+
+        // push report dates
+        this.options.xaxis.categories.push(...reportDates)
+
+        // Separate case, deaths, and recovered
+        var allCasesType = sliced
+        var CasesType = Object.values(allCasesType)
+
+        // Confirmed cases
+        var t = CasesType.map((arr) => {
+          return arr.confirmed
+        })
+        console.log(t)
+
+        // Deaths cases
+        var t2 = CasesType.map((arr) => {
+          return arr.deaths
+        })
+
+        // Recovered cases
+        this.testing3 = CasesType.map((arr) => {
+          return arr.recovered
+        })
+        // console.log(CasesType)
+
+        // push series (confirmed)
+        this.seriesA[0].data.push(...t)
+        // push series (deaths)
+        this.seriesA[1].data.push(...t2)
+
+        // console.log(sliced)
       }).catch(error => {
         console.log(`API: ${error}`)
       })
