@@ -17,7 +17,7 @@
                 <div v-for="(getSortedDataItem, index) in getSortedData" :key="index" class="main-nav-content">
                     <div class="country-details">
                         <md-list>
-                            <md-list-item to="/CountryDetails">
+                            <md-list-item to="/CountryDetails"  @click="selectedCountry(index)">
                                 <div class="md-list-item-text">
                                     <span><span class="cd-no">{{ getSortedDataItem.cases }} </span><span class="cd-name">{{ getSortedDataItem.country }}</span></span>
                                     <span>Deaths: {{ getSortedDataItem.deaths }}</span>
@@ -34,11 +34,17 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-
+import { eventBus } from '@/main'
 export default {
   data: () => ({
     showNavigation: false
   }),
+  methods: {
+    selectedCountry (index) {
+      const payLoad = this.getSortedData[index]
+      eventBus.$emit('selectedCountry', payLoad)
+    }
+  },
   computed: {
     ...mapState([
       'covidData'
@@ -51,6 +57,13 @@ export default {
 </script>
 
 <style lang="scss">
+  .md-theme-default a:not(.md-button) {
+    color: #fff;
+    text-decoration: none;
+    &:hover{
+      color: #fff;
+    }
+  }
 .md-list {
   margin: -13px 0 5px 0;
 }

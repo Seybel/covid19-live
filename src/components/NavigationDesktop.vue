@@ -1,30 +1,31 @@
 <template>
-    <div>
-        <div class="main-nav-container md-xsmall-hide">
-            <md-content class="main-nav md-scrollbar md-theme-default">
-                <div class="main-nav-content">
-                    <div class="main-nav-level" v-for="(getSortedDataItem, index) in getSortedData" :key="index">
-                        <div v-if="getSortedData.length" class="country-details">
-                            <md-list id="countryList">
-                                <md-list-item to="/CountryDetails">
-                                    <div class="md-list-item-text">
-                                        <!-- <span>{{ getCases }}</span> -->
-                                        <span><span class="cd-no">{{ getSortedDataItem.cases }} </span><span class="cd-name">{{ getSortedDataItem.country }}</span></span>
-                                        <span>Deaths: {{ getSortedDataItem.deaths }}</span>
-                                        <span>Recovered: {{ getSortedDataItem.recovered }}</span>
-                                    </div>
-                                </md-list-item>
-                            </md-list>
-                        </div>
-                    </div>
-                </div>
-            </md-content>
+  <div>
+    <div class="main-nav-container md-xsmall-hide">
+      <md-content class="main-nav md-scrollbar md-theme-default">
+        <div class="main-nav-content">
+          <div class="main-nav-level" v-for="(getSortedDataItem, index) in getSortedData" :key="index">
+            <div v-if="getSortedData.length" class="country-details">
+              <md-list id="countryList">
+                <md-list-item to="/CountryDetails" @click="selectedCountry(index)">
+                  <div class="md-list-item-text">
+                    <!-- <span>{{ getCases }}</span> -->
+                    <span><span class="cd-no">{{ getSortedDataItem.cases }} </span><span class="cd-name">{{ getSortedDataItem.country }}</span></span>
+                    <span>Deaths: {{ getSortedDataItem.deaths }}</span>
+                    <span>Recovered: {{ getSortedDataItem.recovered }}</span>
+                  </div>
+                </md-list-item>
+              </md-list>
+            </div>
+          </div>
         </div>
+      </md-content>
     </div>
+  </div>
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex'
+import { eventBus } from '@/main'
 export default {
   computed: {
     ...mapState([
@@ -34,8 +35,11 @@ export default {
       'getSortedData'
     ])
   },
-
   methods: {
+    selectedCountry (index) {
+      const payLoad = this.getSortedData[index]
+      eventBus.$emit('selectedCountry', payLoad)
+    }
   }
 }
 </script>

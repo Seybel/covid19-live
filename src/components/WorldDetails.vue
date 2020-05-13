@@ -28,7 +28,7 @@ export default {
   position: absolute;
   margin-top: 55px;
   padding-top: 24px;
-  right: 35px;
+  right: 20px;
   // z-index: 16;
   // border-left: 1px solid #333;
   // padding-right: 10px;
@@ -41,28 +41,28 @@ export default {
     margin: 5px 0;
 
     li {
-        color: #7d7d7d;
+      color: #7d7d7d;
 
-        span.wd-details-title {
-          color: #b9b9b9;
-          font-size: 16px;
-          font-weight: 500;
-          line-height: 28px;
+      span.wd-details-title {
+        color: #b9b9b9;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 28px;
+      }
+
+      span.wd-details-text {
+        color: #fff;
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 40px;
+
+        &.ggg {
+          color: #d32f2f;
         }
-
-        span.wd-details-text {
-          color: #fff;
-          font-size: 28px;
-          font-weight: 500;
-          line-height: 40px;
-
-          &.ggg {
-            color: #d32f2f;
-          }
-          &.hhh {
-            color: #6ba476;
-          }
+        &.hhh {
+          color: #6ba476;
         }
+      }
     }
   }
 }
