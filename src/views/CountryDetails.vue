@@ -13,8 +13,8 @@
     </md-toolbar>
     <div class="md-layout">
       <div class="md-layout-item md-size-20">
-          <h3 class="Confirmed">Confirmed</h3>
-          <p class="value cases">{{country.cases}}</p>
+        <h3 class="Confirmed">Confirmed</h3>
+        <p class="value cases">{{country.cases}}</p>
       </div>
       <div class="md-layout-item md-size-20">
           <h3 class="Deaths">Deaths</h3>
