@@ -14,8 +14,7 @@ const routes = [
   {
     path: '/countrydetails',
     name: 'CountryDetails',
-    component: CountryDetails,
-    props: true
+    component: CountryDetails
   }
 ]
 

@@ -100,7 +100,6 @@ export default {
     // padding-top: 24px;
     margin-left: 310px;
     transform: none;
-    // position: sticky;
     z-index: 1;
   }
   // MOBILE STYLE

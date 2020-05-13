@@ -1,15 +1,15 @@
 <template>
-    <div>
-        <md-toolbar class="md-elevation-2 md-elevation-2 showHide">
-            <h3 class="md-title" style="flex: 1">Covid19 World Confirmed cases</h3>
-            <div class="md-toolbar-section-end">
-                <md-button class="md-icon-button">
-                  <md-icon><i class="fa fa-github"></i></md-icon>
-                  <md-tooltip md-direction="bottom">Repo</md-tooltip>
-                </md-button>
-            </div>
-        </md-toolbar>
-    </div>
+  <div>
+    <md-toolbar class="md-elevation-2 md-elevation-2 showHide">
+      <h3 class="md-title"  style="flex: 1"><router-link to="/"> World Confirmed cases</router-link></h3>
+      <div class="md-toolbar-section-end">
+          <md-button class="md-icon-button">
+            <md-icon><i class="fa fa-github"></i></md-icon>
+            <md-tooltip md-direction="bottom">Repo</md-tooltip>
+          </md-button>
+      </div>
+    </md-toolbar>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -18,6 +18,13 @@
 .md-toolbar {
   position: fixed;
   overflow-x: hidden;
+  .md-title a {
+    color: #fff;
+    &:hover{
+      text-decoration: none;
+      color: #fff;
+    }
+  }
 }
 
 // MOBILE STYLE
