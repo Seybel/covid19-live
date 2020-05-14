@@ -5,7 +5,7 @@
     <NavigationMobile />
     <WorldDetails />
     <Map />
-    <!-- <Charts /> -->
+    <Charts />
   </div>
 </template>
 
@@ -15,7 +15,7 @@ import NavigationDesktop from '@/components/NavigationDesktop'
 import NavigationMobile from '@/components/NavigationMobile'
 import WorldDetails from '@/components/WorldDetails'
 import Map from '@/components/Map'
-// import Charts from '@/components/Charts'
+import Charts from '@/components/Charts'
 
 export default {
   components: {
@@ -23,8 +23,8 @@ export default {
     NavigationDesktop,
     NavigationMobile,
     WorldDetails,
-    Map
-    // Charts
+    Map,
+    Charts
   }
 }
 </script>

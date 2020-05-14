@@ -31,7 +31,7 @@ export default {
   right: 20px;
   // z-index: 16;
   // border-left: 1px solid #333;
-  // padding-right: 10px;
+  padding-right: 10px;
   max-width: 400px;
 
   ul {

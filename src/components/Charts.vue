@@ -4,13 +4,14 @@
         <!-- <div class="md-layout-row"> -->
             <div class="md-layout-item">
                 <div class="chart-inner-wrapper">
-                  <!-- <button type="button" @click="updateC">Change data</button> -->
+                  <h3>Total Confirmed Cases and Deaths Daily</h3>
                   <apexchart width="394" height="300" type="area" :options="options" :series="seriesA"></apexchart>
                 </div>
             </div>
             <div class="md-layout-item">
                 <div class="chart-inner-wrapper2">
-                    <apexchart width="394" height="300" type="radar" :options="options" :series="seriesB"></apexchart>
+                  <h3>Total Recovered Cases Daily</h3>
+                    <apexchart width="394" height="300" title="title.text2" type="radar" :options="options" :series="seriesB"></apexchart>
                 </div>
             </div>
              <!-- <div class="md-layout-item">
@@ -31,9 +32,6 @@ import axios from 'axios'
 
 export default {
   data: () => ({
-    testing: [],
-    testing2: [],
-    testing3: [],
     options: {
       chart: {
         id: 'vuechart-example',
@@ -79,15 +77,15 @@ export default {
           }
         }
       },
-      title: {
-        text: 'My Charts',
-        style: {
-          fontSize: '16px',
-          fontWeight: 'bold',
-          fontFamily: 'Helvetica, Arial, sans-serif',
-          color: '#7d7d7d'
-        }
-      },
+      // title: {
+      //   text: 'Total Confirmed Cases and Deaths Daily',
+      //   style: {
+      //     fontSize: '16px',
+      //     fontWeight: 'bold',
+      //     fontFamily: 'Helvetica, Arial, sans-serif',
+      //     color: '#7d7d7d'
+      //   }
+      // },
       noData: {
         text: 'Loading...',
         align: 'center',
@@ -115,24 +113,12 @@ export default {
       data: []
     }]
   }),
-
-  //   // const newData = this.xAxis[0].data.map(() => {
-  //   //   return this.testing
-  //   // })
-  //   const newData = this.options.xaxis.categories.map(() => {
-  //     return this.testing
-  //   })
-  //   return newData
-  //   // In the same way, update the series option
-  //   // this.xAxis = [{
-  //   //   data: newData
-  //   // }]
-  // },
-
   mounted () {
     axios.get('https://covidapi.info/api/v1/global/count')
       .then(response => {
+        // Return results
         const myObj = response.data.result
+        // Return last seven properties of myObj
         const sliced = Object.keys(myObj).slice(-7).reduce((resultA, key) => {
           resultA[key] = myObj[key]
           return resultA
@@ -146,31 +132,33 @@ export default {
         // push report dates
         this.options.xaxis.categories.push(...reportDates)
 
-        // Separate case, deaths, and recovered
+        // Separate total case, deaths, and recovered
         var allCasesType = sliced
         var CasesType = Object.values(allCasesType)
 
         // Confirmed cases
-        var t = CasesType.map((arr) => {
+        var confirmedCases = CasesType.map((arr) => {
           return arr.confirmed
         })
-        console.log(t)
+        // console.log(confirmedCases)
 
         // Deaths cases
-        var t2 = CasesType.map((arr) => {
+        var deathCases = CasesType.map((arr) => {
           return arr.deaths
         })
 
         // Recovered cases
-        this.testing3 = CasesType.map((arr) => {
+        var recoveredCases = CasesType.map((arr) => {
           return arr.recovered
         })
         // console.log(CasesType)
 
         // push series (confirmed)
-        this.seriesA[0].data.push(...t)
+        this.seriesA[0].data.push(...confirmedCases)
         // push series (deaths)
-        this.seriesA[1].data.push(...t2)
+        this.seriesA[1].data.push(...deathCases)
+        // push series (recovered)
+        this.seriesB[0].data.push(...recoveredCases)
 
         // console.log(sliced)
       }).catch(error => {
@@ -183,6 +171,12 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/scss/index.scss';
 
+h3 {
+  font-size: 16px;
+  font-weight: 900;
+  color: #7d7d7d;
+  margin-left: 16px;
+}
 .md-layout {
     margin: 10px 10px;
     margin-right: 30px;
