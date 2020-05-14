@@ -57,13 +57,13 @@ export default {
 </script>
 
 <style lang="scss">
-  .md-theme-default a:not(.md-button) {
-    color: #fff;
-    text-decoration: none;
-    &:hover{
-      color: #fff;
-    }
-  }
+  // .md-theme-default a:not(.md-button) {
+  //   color: #fff;
+  //   text-decoration: none;
+  //   &:hover{
+  //     color: #fff;
+  //   }
+  // }
 .md-list {
   margin: -13px 0 5px 0;
 }
