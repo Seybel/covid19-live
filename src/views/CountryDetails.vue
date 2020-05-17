@@ -50,10 +50,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/scss/index.scss';
  .md-layout{
     justify-content: center;
     font-size: 16px;
-    color: #7d7d7d;
+    color: $wd-details;
     &-item{
       display: flex;
       flex-direction: column;
@@ -62,23 +63,24 @@ export default {
       padding: 10px;
       p {
         font-size: 18px;
-        border: 2px solid #7d7d7d;
+        font-weight: $xx-bold;
+        border: 2px solid $wd-details;
         width: 50%;
         height: 45px;
         text-align: center;
         padding-top: 10px;
       }
       .cases{
-        color: #d32f2f;
+        color: $country-cases;
       }
       .deaths{
-        color: #fff;
+        color: $white;
       }
       .recovered{
-       color: #6ba476;
+       color: $recovered;
       }
       .tests{
-        color: #c7c70d;
+        color: $theme-default-primary;
       }
     }
  }

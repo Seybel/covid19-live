@@ -58,7 +58,7 @@ export default {
 
 <style lang="scss">
   // .md-theme-default a:not(.md-button) {
-  //   color: #fff;
+  //   // color: #fff;
   //   text-decoration: none;
   //   &:hover{
   //     color: #fff;
