@@ -1,30 +1,26 @@
 <template>
-    <div v-if="options.xaxis.categories.length" class="md-layout">
+  <div v-if="options.xaxis.categories.length" class="md-layout">
         <!-- {{ testing.confirmed }} -->
         <!-- <div class="md-layout-row"> -->
-            <div class="md-layout-item">
-                <div class="chart-inner-wrapper">
-                  <h3>Total Confirmed Cases and Deaths Daily</h3>
-                  <apexchart width="394" height="300" type="area" :options="options" :series="seriesA"></apexchart>
-                </div>
-            </div>
-            <div class="md-layout-item">
-                <div class="chart-inner-wrapper2">
-                  <h3>Total Recovered Cases Daily</h3>
-                    <apexchart width="394" height="300" title="title.text2" type="radar" :options="options" :series="seriesB"></apexchart>
-                </div>
-            </div>
-             <!-- <div class="md-layout-item">
-                <div class="chart-inner-wrapper3">
-                    <apexchart width="394" height="300" type="line" :options="options" :series="seriesC"></apexchart>
-                </div>
-            </div>
-            <div class="md-layout-item">
-                <div class="chart-inner-wrapper4">
-                    <apexchart width="394" height="300" type="bar" :options="options" :series="seriesD"></apexchart>
-                </div>
-            </div> -->
-        </div>
+    <div class="chart-inner-wrapper">
+      <h3>Total Confirmed Cases and Deaths Daily</h3>
+      <apexchart width="345" height="300" type="area" :options="options" :series="seriesA"></apexchart>
+    </div>
+    <div class="chart-inner-wrapper2">
+      <h3>Total Recovered Cases Daily</h3>
+        <apexchart width="345" height="300" title="title.text2" type="radar" :options="options" :series="seriesB"></apexchart>
+    </div>
+    <!-- <div class="md-layout-item">
+      <div class="chart-inner-wrapper3">
+          <apexchart width="394" height="300" type="line" :options="options" :series="seriesC"></apexchart>
+      </div>
+  </div>
+  <div class="md-layout-item">
+      <div class="chart-inner-wrapper4">
+          <apexchart width="394" height="300" type="bar" :options="options" :series="seriesD"></apexchart>
+      </div>
+  </div> -->
+</div>
 </template>
 
 <script>
@@ -178,42 +174,85 @@ h3 {
   margin-left: 16px;
 }
 .md-layout {
-    margin: 10px 10px;
-    margin-right: 30px;
-    margin-left: 130px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
 }
 .chart-inner-wrapper {
-    background-color: $charts-bg-color;
-    border: 1px solid #333;
-    padding: 15px 30px 15px 20px;
-    max-width: 480px;
-//     margin-top: 5px;
-    margin-left: 180px;
-    // margin-right: 180px;
+  background-color: $charts-bg-color;
+  border: 1px solid #333;
+  border-radius: 5px;
+  width: 415px;
+  margin-left: 130px;
+  padding: 15px 30px 15px 20px;
 }
 
 .chart-inner-wrapper2 {
-    background-color: $charts-bg-color;
-    border: 1px solid #333;
+  background-color: $charts-bg-color;
+  border: 1px solid #333;
+  border-radius: 5px;
+  width: 415px;
+  margin-left: 20px;
+  padding: 15px 30px 15px 20px;
+}
+// .chart-inner-wrapper3 {
+//     background-color: $charts-bg-color;
+//     border: 1px solid #333;
+//     padding: 15px 30px 15px 20px;
+//     max-width: 480px;
+//     margin-top: 10px;
+//     margin-left: 180px;
+//     // margin-right: 180px;
+// }
+
+// .chart-inner-wrapper4 {
+//     background-color: $charts-bg-color;
+//     border: 1px solid #333;
+//     padding: 15px 30px 15px 20px;
+//     max-width: 480px;
+//     margin-top: 10px;
+// }
+
+@media screen and (max-width: 600px) {
+  .chart-inner-wrapper {
+    padding: 10px 10px 0px 5px;
+    margin: 10px 20px 20px;
+  }
+  .chart-inner-wrapper2 {
+    padding: 10px 10px 0px 5px;
+    margin: 15px 20px 20px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .chart-inner-wrapper {
+    margin: 15px 0px 0px 290px;
+  }
+  .chart-inner-wrapper2 {
+    margin: 20px 0px 0px 290px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .chart-inner-wrapper {
+    padding: 30px 100px;
+    width: 650px;
+  }
+  .chart-inner-wrapper2 {
+   padding: 30px 100px;
+    width: 650px;
+  }
+}
+@media screen and (min-width: 1366px) {
+  .chart-inner-wrapper {
+    width: 415px;
+    margin-left: 130px;
     padding: 15px 30px 15px 20px;
-    max-width: 480px;
+  }
+  .chart-inner-wrapper2 {
+    width: 415px;
+    margin-left: 20px;
+    padding: 15px 30px 15px 20px;
+  }
 }
 
-.chart-inner-wrapper3 {
-    background-color: $charts-bg-color;
-    border: 1px solid #333;
-    padding: 15px 30px 15px 20px;
-    max-width: 480px;
-    margin-top: 10px;
-    margin-left: 180px;
-    // margin-right: 180px;
-}
-
-.chart-inner-wrapper4 {
-    background-color: $charts-bg-color;
-    border: 1px solid #333;
-    padding: 15px 30px 15px 20px;
-    max-width: 480px;
-    margin-top: 10px;
-}
 </style>
