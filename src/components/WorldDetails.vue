@@ -2,7 +2,7 @@
   <div class="world-details text-center">
     <!-- <span>{{totalConfirmedData}}</span> -->
       <ul class="showHide">
-          <li><span class="wd-details-title">Total Confirmed</span></li>
+          <li><span class="wd-details-title">Confirmed</span></li>
           <li><span class="wd-details-text ggg">{{ totalConfirmedData.cases }}</span></li>
           <li><span class="wd-details-title">Recovered</span></li>
           <li><span class="wd-details-text hhh">{{ totalConfirmedData.recovered }}</span></li>
@@ -25,14 +25,17 @@ export default {
 <style lang="scss" scoped>
 .showHide { display: none; } // Toggle
 .world-details {
+  background-color: rgb(58, 57, 57);
   position: absolute;
-  margin-top: 55px;
+  border-radius: 10px;
+  margin-top: 75px;
   padding-top: 24px;
-  right: 20px;
+  padding-bottom: 24px;
+  right: 23px;
   // z-index: 16;
   // border-left: 1px solid #333;
   padding-right: 10px;
-  max-width: 400px;
+  width: 200px;
 
   ul {
     list-style: none;
@@ -42,19 +45,20 @@ export default {
 
     li {
       color: #7d7d7d;
+      padding-bottom: 10px;
 
       span.wd-details-title {
         color: #b9b9b9;
-        font-size: 16px;
+        font-size: 19px;
         font-weight: 500;
         line-height: 28px;
       }
 
       span.wd-details-text {
         color: #fff;
-        font-size: 28px;
+        font-size: 36px;
         font-weight: 500;
-        line-height: 40px;
+        line-height: 48px;
 
         &.ggg {
           color: #d32f2f;
