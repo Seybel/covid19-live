@@ -3,22 +3,29 @@
     <!-- <span>{{totalConfirmedData}}</span> -->
       <ul class="showHide">
           <li><span class="wd-details-title">Confirmed</span></li>
-          <li><span class="wd-details-text ggg">{{ totalConfirmedData.cases }}</span></li>
+          <li><span class="wd-details-text ggg">{{ totalConfirmedData.cases | formatNumber }}</span></li>
           <li><span class="wd-details-title">Recovered</span></li>
-          <li><span class="wd-details-text hhh">{{ totalConfirmedData.recovered }}</span></li>
+          <li><span class="wd-details-text hhh">{{ totalConfirmedData.recovered | formatNumber }}</span></li>
           <li><span class="wd-details-title">Deaths</span></li>
-          <li><span class="wd-details-text">{{ totalConfirmedData.deaths }}</span></li>
+          <li><span class="wd-details-text">{{ totalConfirmedData.deaths | formatNumber }}</span></li>
       </ul>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import numeral from 'numeral'
+
 export default {
   computed: {
     ...mapState([
       'totalConfirmedData'
     ])
+  },
+  filters: {
+    formatNumber: function (value) {
+      return numeral(value).format('0,0') // Format number
+    }
   }
 }
 </script>
@@ -29,13 +36,9 @@ export default {
   position: absolute;
   border-radius: 10px;
   margin-top: 75px;
-  padding-top: 24px;
-  padding-bottom: 24px;
-  right: 23px;
-  // z-index: 16;
-  // border-left: 1px solid #333;
-  padding-right: 10px;
-  width: 200px;
+  padding: 24px 10px 24px 10px;
+  right: 44px;
+  max-width: 250px;
 
   ul {
     list-style: none;
