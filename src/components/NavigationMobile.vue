@@ -19,9 +19,9 @@
                         <md-list>
                             <md-list-item to="/CountryDetails"  @click="selectedCountry(index)">
                                 <div class="md-list-item-text">
-                                    <span><span class="cd-no">{{ getSortedDataItem.cases }} </span><span class="cd-name">{{ getSortedDataItem.country }}</span></span>
-                                    <span>Deaths: {{ getSortedDataItem.deaths }}</span>
-                                    <span>Recovered: {{ getSortedDataItem.recovered }}</span>
+                                    <span><span class="cd-no">{{ getSortedDataItem.cases | formatNumber }} </span><span class="cd-name">{{ getSortedDataItem.country }}</span></span>
+                                    <span>Deaths: {{ getSortedDataItem.deaths | formatNumber }}</span>
+                                    <span>Recovered: {{ getSortedDataItem.recovered | formatNumber }}</span>
                                 </div>
                             </md-list-item>
                         </md-list>
@@ -34,7 +34,9 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
+import numeral from 'numeral'
 import { eventBus } from '@/main'
+
 export default {
   data: () => ({
     showNavigation: false
@@ -52,13 +54,18 @@ export default {
     ...mapGetters([
       'getSortedData'
     ])
+  },
+  filters: {
+    formatNumber: function (value) {
+      return numeral(value).format('0,0') // Format number
+    }
   }
 }
 </script>
 
 <style lang="scss">
   // .md-theme-default a:not(.md-button) {
-  //   // color: #fff;
+  //   color: #fff;
   //   text-decoration: none;
   //   &:hover{
   //     color: #fff;

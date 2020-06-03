@@ -14,19 +14,19 @@
     <div class="md-layout">
       <div class="md-layout-item md-size-20">
         <h3 class="Confirmed">Confirmed</h3>
-        <p class="value cases">{{country.cases}}</p>
+        <p class="value cases">{{country.cases | formatNumber}}</p>
       </div>
       <div class="md-layout-item md-size-20">
           <h3 class="Deaths">Deaths</h3>
-          <p class="value deaths">{{country.deaths}}</p>
+          <p class="value deaths">{{country.deaths | formatNumber}}</p>
       </div>
       <div class="md-layout-item md-size-20">
           <h3 class="Recovered">Recovered</h3>
-          <p class="value recovered">{{country.recovered}}</p>
+          <p class="value recovered">{{country.recovered | formatNumber}}</p>
       </div>
       <div class="md-layout-item md-size-20">
           <h3 class="Tested">Tested</h3>
-          <p class="value tests">{{country.tests}}</p>
+          <p class="value tests">{{country.tests | formatNumber}}</p>
       </div>
     </div>
 
@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import numeral from 'numeral'
 import { eventBus } from '@/main'
 
 export default {
@@ -79,6 +80,25 @@ export default {
             }
           }
         },
+        responsive: [
+          {
+            breakpoint: 1000,
+            options: {
+              chart: {
+                align: 'center',
+                verticalAlign: 'middle',
+                width: '250px',
+                height: '200px'
+              },
+              grid: {
+                padding: {
+                  // right: 10,
+                  left: 15
+                }
+              }
+            }
+          }
+        ],
         noData: {
           text: 'Loading...',
           align: 'center',
@@ -97,6 +117,11 @@ export default {
           data: []
         }
       ]
+    }
+  },
+  filters: {
+    formatNumber: function (value) {
+      return numeral(value).format('0,0') // Format number
     }
   },
   mounted () {
