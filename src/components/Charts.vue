@@ -2,13 +2,13 @@
   <div v-if="options.xaxis.categories.length" class="md-layout">
         <!-- {{ testing.confirmed }} -->
         <!-- <div class="md-layout-row"> -->
-    <div class="chart-inner-wrapper">
+    <div class="chart-inner-wrapper ">
       <h3>Total Confirmed Cases and Deaths Daily</h3>
-      <apexchart width="345" height="300" type="area" :options="options" :series="seriesA"></apexchart>
+      <apexchart type="area" :options="options" :series="seriesA"></apexchart>
     </div>
     <div class="chart-inner-wrapper2">
       <h3>Total Recovered Cases Daily</h3>
-        <apexchart width="345" height="300" title="title.text2" type="radar" :options="options" :series="seriesB"></apexchart>
+        <apexchart  title="title.text2" type="radar" :options="options" :series="seriesB"></apexchart>
     </div>
     <!-- <div class="md-layout-item">
       <div class="chart-inner-wrapper3">
@@ -30,6 +30,7 @@ export default {
   data: () => ({
     options: {
       chart: {
+        width: '100%',
         id: 'vuechart-example',
         toolbar: {
           show: false
@@ -168,13 +169,13 @@ export default {
 @import '../assets/scss/index.scss';
 
 h3 {
-  font-size: 16px;
-  font-weight: 900;
-  color: #7d7d7d;
+  font-size: $regular;
+  font-weight: $deep;
+  color: $wd-details;
   margin-left: 16px;
 }
 .md-layout {
-  display: flex;
+  display: $display-flex;
   flex-direction: row;
   justify-content: center;
   margin-top: 20px;
@@ -183,8 +184,8 @@ h3 {
   background-color: $charts-bg-color;
   border: 1px solid #333;
   border-radius: 5px;
-  width: 415px;
-  margin-left: 130px;
+  width: 500px;
+  margin-left: 295px;
   padding: 15px 30px 15px 20px;
 }
 
@@ -192,9 +193,9 @@ h3 {
   background-color: $charts-bg-color;
   border: 1px solid #333;
   border-radius: 5px;
-  width: 415px;
+  width: 500px;
   margin-left: 20px;
-  padding: 15px 30px 15px 20px;
+  padding: 15px 30px 10px 20px;
 }
 // .chart-inner-wrapper3 {
 //     background-color: $charts-bg-color;
@@ -215,6 +216,9 @@ h3 {
 // }
 
 @media screen and (max-width: 600px) {
+  .md-layout {
+    margin-top: 160px;
+  }
   .chart-inner-wrapper {
     padding: 10px 10px 0px 5px;
     margin: 10px 20px 20px;
@@ -225,31 +229,42 @@ h3 {
   }
 }
 @media screen and (min-width: 768px) {
+  .md-layout {
+    margin-top: 160px;
+  }
   .chart-inner-wrapper {
-    margin: 15px 0px 0px 290px;
+    width: 430px;
+    margin: 15px 0px 10px 300px;
   }
   .chart-inner-wrapper2 {
-    margin: 20px 0px 0px 290px;
+    width: 430px;
+    margin: 15px 0px 10px 300px;
   }
 }
 @media screen and (min-width: 1024px) {
+  // .md-layout {
+  //   margin-top: 160px;
+  // }
   .chart-inner-wrapper {
     padding: 30px 100px;
-    width: 650px;
+    width: 700px;
   }
   .chart-inner-wrapper2 {
    padding: 30px 100px;
-    width: 650px;
+    width: 700px;
   }
 }
 @media screen and (min-width: 1366px) {
+  .md-layout {
+    margin-top: 20px;
+  }
   .chart-inner-wrapper {
-    width: 415px;
-    margin-left: 130px;
+    width: 500px;
+    margin-left: 295px;
     padding: 15px 30px 15px 20px;
   }
   .chart-inner-wrapper2 {
-    width: 415px;
+    width: 500px;
     margin-left: 20px;
     padding: 15px 30px 15px 20px;
   }

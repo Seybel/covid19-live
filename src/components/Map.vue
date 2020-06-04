@@ -114,6 +114,7 @@ export default {
 
    @media screen and (min-width: 768px) and (max-width: 1199px) {
     .map{
+      max-width: 90%;
       margin-top: 50px;
     }
   }

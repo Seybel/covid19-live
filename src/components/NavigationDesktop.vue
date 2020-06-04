@@ -6,7 +6,13 @@
           <div class="main-nav-level" v-for="(getSortedDataItem, index) in getSortedData" :key="index">
             <div v-if="getSortedData.length" class="country-details">
               <md-list id="countryList">
-                <md-list-item to="/CountryDetails" @click="selectedCountry(index)">
+                <md-list-item :to="`/CountryDetails/${getSortedData[index].country}
+                /${getSortedData[index].cases}
+                /${getSortedData[index].deaths}
+                /${getSortedData[index].recovered}
+                /${getSortedData[index].tests}`"
+                @click="selectedCountry(index)"
+                >
                   <div class="md-list-item-text">
                     <!-- <span>{{ getCases }}</span> -->
                     <span><span class="cd-no">{{ getSortedDataItem.cases | formatNumber }} </span><span class="cd-name">{{ getSortedDataItem.country }}</span></span>
@@ -28,6 +34,9 @@ import { mapState, mapGetters } from 'vuex'
 import numeral from 'numeral'
 import { eventBus } from '@/main'
 export default {
+  props: [
+    'country'
+  ],
   computed: {
     ...mapState([
       'covidData'

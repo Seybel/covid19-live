@@ -1,9 +1,7 @@
 <template>
   <div>
     <md-toolbar class="md-elevation-2 md-elevation-2 showHide">
-      <h3 class="md-title"  style="flex: 1">
-        <router-link to="/">Covid19 World Confirmed cases</router-link>
-      </h3>
+      <router-link to="/"><h3 class="md-title">Covid19 Live </h3></router-link>
       <div class="md-toolbar-section-end">
           <md-button class="md-icon-button">
             <md-icon><i class="fa fa-github"></i></md-icon>
@@ -13,20 +11,24 @@
     </md-toolbar>
     <div class="md-layout">
       <div class="md-layout-item md-size-20">
+        <h3 class="Country">Country</h3>
+        <p class="value country">{{$route.params.country}}</p>
+      </div>
+      <div class="md-layout-item md-size-20">
         <h3 class="Confirmed">Confirmed</h3>
-        <p class="value cases">{{country.cases | formatNumber}}</p>
+        <p class="value cases">{{$route.params.cases | formatNumber}}</p>
       </div>
       <div class="md-layout-item md-size-20">
           <h3 class="Deaths">Deaths</h3>
-          <p class="value deaths">{{country.deaths | formatNumber}}</p>
+          <p class="value deaths">{{$route.params.deaths | formatNumber}}</p>
       </div>
       <div class="md-layout-item md-size-20">
           <h3 class="Recovered">Recovered</h3>
-          <p class="value recovered">{{country.recovered | formatNumber}}</p>
+          <p class="value recovered">{{$route.params.recovered | formatNumber}}</p>
       </div>
       <div class="md-layout-item md-size-20">
           <h3 class="Tested">Tested</h3>
-          <p class="value tests">{{country.tests | formatNumber}}</p>
+          <p class="value tests">{{$route.params.tests | formatNumber}}</p>
       </div>
     </div>
 
@@ -142,22 +144,25 @@ export default {
 @import '../assets/scss/index.scss';
  .md-layout{
     justify-content: center;
-    font-size: 16px;
+    font-size: $regular;
     color: $wd-details;
     &-item{
-      display: flex;
+      display: $display-flex;
       flex-direction: column;
       text-align: center;
       align-items: center;
       padding: 10px;
       p {
-        font-size: 18px;
+        font-size: $big;
         font-weight: $xx-bold;
         border: 2px solid $wd-details;
-        width: 50%;
+        width: 70%;
         height: 45px;
         text-align: center;
         padding-top: 10px;
+      }
+      .country{
+        color: $white;
       }
       .cases{
         color: $country-cases;
@@ -174,24 +179,34 @@ export default {
     }
  }
 
- .chart-inner-wrapper {
-    background-color: rgb(58, 57, 57);
-    border: 1px solid #333;
-    padding: 15px 30px 15px 20px;
-    max-width: 780px;
-    margin-top: 35px;
-    margin-bottom: 20px;
+//  .chart-inner-wrapper {
+//     background-color: rgb(58, 57, 57);
+//     border: 1px solid #333;
+//     padding: 15px 30px 15px 20px;
+//     max-width: 780px;
+//     margin-top: 35px;
+//     margin-bottom: 20px;
 
-    h3.lead {
-      font-size: 16px;
-      font-weight: 900;
-      color: #7d7d7d;
-      margin-left: 16px;
-    }
-}
+//     h3.lead {
+//       font-size: 16px;
+//       font-weight: 900;
+//       color: #7d7d7d;
+//       margin-left: 16px;
+//     }
+// }
+
+  .md-title{
+    color: $white;
+    text-decoration: none;
+    flex: 1;
+  }
+  a:hover {
+    color: $white;
+    text-decoration: none;
+  }
   @media screen and (max-width: 600px) {
     .md-layout{
-      display: flex;
+      display: $display-flex;
       flex-direction: column;
       text-align: center;
       align-items: center;

@@ -1,43 +1,55 @@
 <template>
-    <div>
-        <md-toolbar class="md-theme-default md-elevation-2 md-elevation-2 showHideToolbarMobile">
-            <md-button class="md-icon-button" @click="showNavigation = true">
-                <md-icon>menu</md-icon>
-            </md-button>
-            <span class="md-title"><router-link to="/"> Covid19 Live</router-link></span>
-
-            <div class="md-toolbar-section-end">
-                <md-button class="md-icon-button">
-                    <md-icon><i class="fa fa-github"></i></md-icon>
-                </md-button>
-            </div>
-        </md-toolbar>
-        <md-drawer :md-active.sync="showNavigation" class="md-fixed showHideMobile" md-swipeable>
-            <div class="main-nav-drawer-content">
-                <div v-for="(getSortedDataItem, index) in getSortedData" :key="index" class="main-nav-content">
-                    <div class="country-details">
-                        <md-list>
-                            <md-list-item to="/CountryDetails"  @click="selectedCountry(index)">
-                                <div class="md-list-item-text">
-                                    <span><span class="cd-no">{{ getSortedDataItem.cases | formatNumber }} </span><span class="cd-name">{{ getSortedDataItem.country }}</span></span>
-                                    <span>Deaths: {{ getSortedDataItem.deaths | formatNumber }}</span>
-                                    <span>Recovered: {{ getSortedDataItem.recovered | formatNumber }}</span>
-                                </div>
-                            </md-list-item>
-                        </md-list>
-                    </div>
+  <div>
+    <md-toolbar class="md-theme-default md-elevation-2 md-elevation-2 showHideToolbarMobile">
+        <md-button class="md-icon-button" @click="showNavigation = true">
+            <md-icon>menu</md-icon>
+        </md-button>
+        <router-link to="/"><span class="md-title">Covid19 Live</span></router-link>
+        <div class="md-toolbar-section-end">
+          <Searchbox />
+          <md-button class="md-icon-button">
+              <md-icon><i class="fa fa-github"></i></md-icon>
+          </md-button>
+        </div>
+    </md-toolbar>
+    <md-drawer :md-active.sync="showNavigation" class="md-fixed showHideMobile" md-swipeable>
+      <div class="main-nav-drawer-content">
+        <div v-for="(getSortedDataItem, index) in getSortedData" :key="index" class="main-nav-content">
+          <div class="country-details">
+            <md-list>
+              <md-list-item :to="`/CountryDetails/${getSortedData[index].country}
+                /${getSortedData[index].cases}
+                /${getSortedData[index].deaths}
+                /${getSortedData[index].recovered}
+                /${getSortedData[index].tests}`"
+                @click="selectedCountry(index)"
+                >
+                <div class="md-list-item-text">
+                  <span><span class="cd-no">{{ getSortedDataItem.cases | formatNumber }} </span><span class="cd-name">{{ getSortedDataItem.country }}</span></span>
+                  <span>Deaths: {{ getSortedDataItem.deaths | formatNumber }}</span>
+                  <span>Recovered: {{ getSortedDataItem.recovered | formatNumber }}</span>
                 </div>
-            </div>
-        </md-drawer>
-    </div>
+              </md-list-item>
+            </md-list>
+          </div>
+        </div>
+      </div>
+    </md-drawer>
+  </div>
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex'
 import numeral from 'numeral'
 import { eventBus } from '@/main'
-
+import Searchbox from '@/components/Searchbox'
 export default {
+  props: [
+    'country'
+  ],
+  components: {
+    Searchbox
+  },
   data: () => ({
     showNavigation: false
   }),
@@ -64,13 +76,11 @@ export default {
 </script>
 
 <style lang="scss">
-  // .md-theme-default a:not(.md-button) {
-  //   color: #fff;
-  //   text-decoration: none;
-  //   &:hover{
-  //     color: #fff;
-  //   }
-  // }
+@import '../assets/scss/index.scss';
+  .md-title{
+    color: $white;
+    text-decoration: none;
+  }
 .md-list {
   margin: -13px 0 5px 0;
 }
@@ -78,21 +88,21 @@ export default {
 .md-list-item-text {
   color: rgba(255, 255, 255, 0.7);
   font-size: 14px;
-  font-weight: 400;
+  font-weight:$regular;
   line-height: 18px;
 
     // cd - country-details
   span.cd-no {
-      color: #d32f2f;
-      font-size: 16px;
-      font-weight: 700;
+      color: $country-cases;
+      font-size: $regular;
+      font-weight:$semi-bold;
       line-height: 19px;
   }
 
   span.cd-name {
-      color: #fff;
-      font-size: 16px;
-      font-weight: 400;
+      color: $white;
+      font-size:$regular;
+      font-weight: $regular;
       line-height: 19px;
   }
 }
@@ -108,14 +118,14 @@ export default {
     overflow: auto;
 }
 
-.showHideToolbarMobile { display: flex; } // Toggle toolbar display on mobile
+.showHideToolbarMobile { display: $display-flex; } // Toggle toolbar display on mobile
 .showHideMobile { display: block; } // Toggle drawer display
 
 // MOBILE STYLE
 
 /* Desktop, Mobile */
 @media screen and (min-width: 768px) {
-  .showHide  { display: flex; }
+  .showHide  { display: $display-flex; }
   .showHideToolbarMobile  { display: none; }
   .showHideMobile  { display: none; }
 }
