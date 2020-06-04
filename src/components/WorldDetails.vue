@@ -31,6 +31,26 @@ export default {
     formatNumber: function (value) {
       return numeral(value).format('0,0') // Format number
     }
+  },
+  mounted () {
+    const counters = document.querySelectorAll('.counter')
+    const speed = 200
+
+    counters.forEach(counter => {
+      const updateCount = () => {
+        const target = +counter.getAttribute('data-target')
+        const count = +counter.innerText
+
+        const inc = target / speed
+
+        if (count < target) {
+          counter.innerText = Math.ceil(count + inc)
+          setTimeout(updateCount, 1)
+        } else {
+        }
+      }
+      updateCount()
+    })
   }
 }
 </script>
@@ -41,18 +61,18 @@ export default {
   justify-content: center;
   } // Toggle
 .world-details {
-  // background-color: rgb(58, 57, 57);
+  background-color: rgb(58, 57, 57);
   position: absolute;
-  // border-radius: 10px;
-  margin-top: 75px;
-  padding: 24px 10px 24px 10px;
+  border-radius: 10px;
+  margin-top: 85px;
+  padding: 44px 10x 64px 10px;
   right: 1%;
   max-width: 250px;
 
   ul {
     list-style: none;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 5px;
+    padding-right: 30px;
     margin: 5px 0;
 
     li {
