@@ -6,13 +6,12 @@
           <div class="main-nav-level" v-for="(getSortedDataItem, index) in getSortedData" :key="index">
             <div v-if="getSortedData.length" class="country-details">
               <md-list id="countryList">
-                <md-list-item :to="`/CountryDetails/${getSortedData[index].country}
-                /${getSortedData[index].cases}
-                /${getSortedData[index].deaths}
-                /${getSortedData[index].recovered}
-                /${getSortedData[index].tests}`"
-                @click="selectedCountry(index)"
-                >
+                <md-list-item :to="{name: 'CountryDetails', params: {country: getSortedData[index].country,
+                  cases: getSortedData[index].cases,
+                  deaths: getSortedData[index].deaths,
+                  recovered: getSortedData[index].recovered,
+                  tests: getSortedData[index].tests,
+                  active:getSortedData[index].active}}">
                   <div class="md-list-item-text">
                     <!-- <span>{{ getCases }}</span> -->
                     <span><span class="cd-no">{{ getSortedDataItem.cases | formatNumber }} </span><span class="cd-name">{{ getSortedDataItem.country }}</span></span>
@@ -32,11 +31,8 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 import numeral from 'numeral'
-import { eventBus } from '@/main'
+// import { eventBus } from '@/main'
 export default {
-  props: [
-    'country'
-  ],
   computed: {
     ...mapState([
       'covidData'
@@ -46,10 +42,10 @@ export default {
     ])
   },
   methods: {
-    selectedCountry (index) {
-      const payLoad = this.getSortedData[index]
-      eventBus.$emit('selectedCountry', payLoad)
-    }
+    // selectedCountry (index) {
+    //   const payLoad = this.getSortedData[index]
+    //   eventBus.$emit('selectedCountry', payLoad)
+    // }
   },
   filters: {
     formatNumber: function (value) {

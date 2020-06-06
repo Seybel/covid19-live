@@ -98,6 +98,7 @@ export default {
     width: 80%;
   }
   .world-details{
+    display: flex;
     position: absolute;
     top: 23%;
     right: 12%;
