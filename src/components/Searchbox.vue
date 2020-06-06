@@ -11,20 +11,22 @@
           <md-icon><i class="fa fa-times" @click="showDialog = !showDialog"></i></md-icon>
          </div>
         <div class="search-text">
-          <form action="">
-           <input type="text" name="search" v-model="search" placeholder="Type here" autocomplete="off">
-           <md-icon><i class="fa fa-search" @click="filteredData"></i></md-icon>
-          </form>
+          <input type="text"
+          name="search"
+          v-model="search"
+          placeholder="Type here"
+          autocomplete="off">
+          <md-icon><i class="fa fa-search"> </i></md-icon>
         </div>
-        <md-list class="search-result" v-for="(getSortedDataItem, index) in filteredData" :key="index">
-          <md-list-item :to="`/CountryDetails/${getSortedData[index].country}/${getSortedData[index].cases}
-            /${getSortedData[index].deaths}
-            /${getSortedData[index].recovered}
-            /${getSortedData[index].tests}
-            `"
-            @click="selectedCountry(index)">
-          <p>{{getSortedDataItem.country}}</p>
-          <img :src="getSortedDataItem.countryInfo.flag" alt="National">
+        <md-list class="search-result" v-for="(DataItem, index) in filteredData" :key="index">
+          <md-list-item  :to="{name: 'CountryDetails', params: {country: DataItem.country,
+            cases: DataItem.cases,
+            deaths: DataItem.deaths,
+            recovered: DataItem.recovered,
+            tests: DataItem.tests,
+            active:DataItem.active}}">
+            <p>{{DataItem.country}}</p>
+            <img :src="DataItem.countryInfo.flag" alt="National Flag">
           </md-list-item>
         </md-list>
       </div>
@@ -34,17 +36,20 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import { eventBus } from '@/main'
+// import { eventBus } from '@/main'
 export default {
   name: 'DialogCustom',
-  props: [
-    'country'
-  ],
   data () {
     return {
       search: '',
       showDialog: false
     }
+  },
+  methods: {
+    // selectedCountry (index) {
+    //   const payLoad = this.filteredData[index]
+    //   eventBus.$emit('selectedCountry', payLoad)
+    // }
   },
   computed: {
     ...mapState([
@@ -53,18 +58,14 @@ export default {
     ...mapGetters([
       'getSortedData'
     ]),
-    filteredData (index) {
-      const self = this
-      return this.getSortedData.filter((DataItem) => {
-        const regex = new RegExp(self.search, 'gi')
-        return DataItem.country.match(regex)
-      })
-    }
-  },
-  methods: {
-    selectedCountry (index) {
-      const payLoad = this.getSortedData[index]
-      eventBus.$emit('selectedCountry', payLoad)
+    filteredData () {
+      if (this.search !== '') {
+        return this.getSortedData.filter((DataItem) => {
+          const regex = new RegExp(this.search, 'gi')
+          return DataItem.country.match(regex)
+        })
+      }
+      return false
     }
   }
 }
@@ -72,7 +73,7 @@ export default {
 
 <style lang="scss" scoped>
   .md-dialog /deep/.md-dialog-container {
-    max-width: 100%;
+    min-width: 400px;
     height: 300px;
     font-family: sans-serif;
   }
@@ -90,7 +91,7 @@ export default {
           margin-left: 55px;
           position: fixed;
           right: 3%;
-          top: 5%;
+          top: 3%;
 
       }
     }
@@ -107,19 +108,19 @@ export default {
         }
       }
       .fa-search{
-        position: relative;
+        position:relative;
         right: 82%;
         margin-bottom: 10px;
         font-size: 13px;
       }
     }
     &-result{
-      border: 2px solid grey;
+      border-bottom: 2px solid grey;
       width: 80%;
       margin: 10px 25px;
-      padding-left: 10px;
+      padding-left: 8px;
       img{
-        width: 50px;
+        width: 40px;
       }
     }
   }

@@ -43,12 +43,12 @@
 
 <script>
 import numeral from 'numeral'
-import { eventBus } from '@/main'
+// import { eventBus } from '@/main'
 
 export default {
   data () {
     return {
-      country: [],
+      // country: [],
       options: {
         chart: {
           id: 'my-chart',
@@ -127,15 +127,18 @@ export default {
     }
   },
   mounted () {
-    eventBus.$on('selectedCountry', (payLoad) => {
-      this.country = payLoad
+    const casesType = this.$route.params
+    // push series (confirmed, deaths, recovered, and active)
+    this.series[0].data.push(casesType.cases, casesType.deaths, casesType.recovered, casesType.active)
+    // eventBus.$on('selectedCountry', (payLoad) => {
+    //   this.country = payLoad
 
-      // console.log(this.country)
-      const casesType = this.country
+    //   // console.log(this.country)
+    //   const casesType = this.country
 
-      // push series (confirmed, deaths, recovered, and active)
-      this.series[0].data.push(casesType.cases, casesType.deaths, casesType.recovered, casesType.active)
-    })
+    //   // push series (confirmed, deaths, recovered, and active)
+    //   this.series[0].data.push(casesType.cases, casesType.deaths, casesType.recovered, casesType.active)
+    // })
   }
 }
 </script>
@@ -157,9 +160,12 @@ export default {
         font-weight: $xx-bold;
         border: 2px solid $wd-details;
         width: 70%;
-        height: 45px;
+        height: 55px;
         text-align: center;
         padding-top: 10px;
+      }
+      .lead{
+        color: $white;
       }
       .country{
         color: $white;
@@ -210,16 +216,28 @@ export default {
       flex-direction: column;
       text-align: center;
       align-items: center;
-      padding: 2px;
-      p {
-        width: 150px;
+      justify-items: center;
+      padding-top: 2px;
+      &-item {
+        p {
+          width: 150px;
+          height: 65px;
+          padding-top: 18px;
+        }
+        .country{
+          padding-top: 10px;
+        }
       }
     }
   }
   @media screen and (min-width: 768px) {
-    p {
-      width: 130px;
-      // padding-top: 3px;
+    .md-layout{
+      &-item{
+        p {
+          width: 135px;
+          // padding-top: 3px;
+        }
+      }
     }
   }
 </style>
