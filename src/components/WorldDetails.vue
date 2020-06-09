@@ -1,7 +1,9 @@
 <template>
-  <div class="world-details text-center md-layout ">
+  <div class="world-details text-center md-layout " v-if="typeof totalConfirmedData != 'undefined'">
       <ul class="showHide ">
         <div class="md-layout-item ">
+          <div id="odometer" class="my-odometer">0</div> <br/>
+          <div id="odometer" class="a-test">12</div>
           <li><span class="wd-details-title"> Confirmed</span></li>
           <li><span class="wd-details-text ggg">{{ totalConfirmedData.cases | formatNumber }}</span></li>
         </div>
@@ -20,17 +22,96 @@
 <script>
 import { mapState } from 'vuex'
 import numeral from 'numeral'
+import Odometer from 'odometer'
+// import NumberTransition from 'vue-number-transition'
 
 export default {
+  data () {
+    return {
+      st: 0
+    }
+  },
+  // directives: {
+  //   // ..
+  //   NumberTransition
+  //   // ..
+  // },
+  watch: {
+    // immediate: true,
+    // deep: true,
+    // test (newValue) {
+    //   alert(`yes, computed property changed: ${newValue}`)
+    //   return newValue
+    // }
+    // totalConfirmedData: {
+    //   handler (newValue) {
+    //     if (newValue) {
+    //       console.log(`yay: ${newValue}`)
+    //       // return newValue
+    //     }
+    //   }
+    // }
+  },
   computed: {
     ...mapState([
       'totalConfirmedData'
-    ])
+    ]),
+    test () {
+      const that = this
+      var ab = numeral(that.totalConfirmedData.cases)
+      var ba = ab.value()
+      console.log(ba)
+      // var myNumeral2 = numeral('1,000')
+      // var value2 = myNumeral2.value()
+      return ba
+    }
   },
   filters: {
     formatNumber: function (value) {
       return numeral(value).format('0,0') // Format number
     }
+  },
+  // methods: {
+  //   // testB (x) {
+  //   //   return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')
+  //   // },
+  //   // testimony (value) {
+  //   //   return numeral(value).format('0,0') // Format number
+  //   // }
+  //   ...mapActions([
+  //     'loadTotalData'
+  //   ])
+  // },
+  async mounted () {
+    // var t = await this.totalConfirmedData
+    console.log(this.$store.dispatch('loadTotalData'))
+    this.$store.dispatch('loadTotalData')
+      .then(() => {
+        const myOdometer = document.querySelector('.my-odometer')
+        const myOdometerB = document.querySelector('.a-test')
+
+        const odometer = new Odometer({
+          el: myOdometer,
+          animation: 'count',
+          duration: 3000
+        })
+        const odometerB = new Odometer({
+          el: myOdometerB,
+          animation: 'count',
+          duration: 3000
+        })
+        // function updateOdometer () {
+        //   return odometer.update(t.cases)
+        // }
+        // setTimeout(updateOdometer, 2000)
+
+        odometer.update(190000)
+        odometerB.update(111111)
+      })
+
+    // console.log(t)
+
+    // myOdometer.innerHTML = 170000
   }
 }
 </script>
@@ -41,18 +122,18 @@ export default {
   justify-content: center;
   } // Toggle
 .world-details {
-  // background-color: rgb(58, 57, 57);
+  background-color: rgb(58, 57, 57);
   position: absolute;
-  // border-radius: 10px;
-  margin-top: 75px;
-  padding: 24px 10px 24px 10px;
-  right: 1%;
+  border-radius: 10px;
+  margin-top: 85px;
+  padding: 44px 10x 64px 10px;
+  right: 5%;
   max-width: 250px;
 
   ul {
     list-style: none;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 5px;
+    padding-right: 30px;
     margin: 5px 0;
 
     li {
@@ -89,6 +170,8 @@ export default {
   text-align: center;
 }
 
+//-------ODOMETER-------//
+
 // MOBILE STYLE
 
 /* Desktop, Mobile */
@@ -98,7 +181,6 @@ export default {
     width: 80%;
   }
   .world-details{
-    display: flex;
     position: absolute;
     top: 23%;
     right: 12%;

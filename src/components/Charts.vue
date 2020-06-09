@@ -14,13 +14,8 @@
       <div class="chart-inner-wrapper3">
           <apexchart width="394" height="300" type="line" :options="options" :series="seriesC"></apexchart>
       </div>
+    </div> -->
   </div>
-  <div class="md-layout-item">
-      <div class="chart-inner-wrapper4">
-          <apexchart width="394" height="300" type="bar" :options="options" :series="seriesD"></apexchart>
-      </div>
-  </div> -->
-</div>
 </template>
 
 <script>

@@ -4,7 +4,7 @@
       <md-content class="main-nav md-scrollbar md-theme-default">
         <div class="main-nav-content">
           <div class="main-nav-level" v-for="(getSortedDataItem, index) in getSortedData" :key="index">
-            <div v-if="getSortedData.length" class="country-details">
+            <div v-if="getSortedData. length" class="country-details">
               <md-list id="countryList">
                 <md-list-item :to="{name: 'CountryDetails', params: {country: getSortedData[index].country,
                   cases: getSortedData[index].cases,
