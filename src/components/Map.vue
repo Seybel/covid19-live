@@ -98,7 +98,7 @@ export default {
     // margin-top: 5px;
     margin-top: 66px;
     // padding-top: 24px;
-    margin-left: 310px;
+    margin-left: 308px;
     transform: none;
     z-index: 1;
   }

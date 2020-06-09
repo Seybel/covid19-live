@@ -12,9 +12,10 @@ const routes = [
     component: Home
   },
   {
-    path: '/CountryDetails/:country/:cases/:deaths/:recovered/:tests/:active',
+    path: '/CountryDetails/:country',
     name: 'CountryDetails',
     component: CountryDetails
+    // query: { country: 'mycountry' }
   }
 ]
 

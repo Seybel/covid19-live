@@ -74,7 +74,8 @@ export default {
 <style lang="scss" scoped>
   .md-dialog /deep/.md-dialog-container {
     min-width: 400px;
-    height: 300px;
+    padding-bottom: 40px;
+    max-height: 300px;
     font-family: sans-serif;
   }
   .search{
@@ -89,6 +90,7 @@ export default {
           bottom: 61%;
           font-size: 24px;
           margin-left: 55px;
+          cursor: pointer;
           position: fixed;
           right: 3%;
           top: 3%;

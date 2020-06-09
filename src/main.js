@@ -17,6 +17,7 @@ import 'leaflet/dist/leaflet.css'
 import '@/plugins/apexcharts'
 
 import './assets/scss/index.scss'
+require('odometer/themes/odometer-theme-default.css')
 
 Vue.use(VueMaterial)
 
