@@ -15,13 +15,20 @@ export default {
       })
   },
 
-  loadTotalData ({ commit }) {
-    Vue.axios.get('https://corona.lmao.ninja/v2/all')
-      .then(response => {
-        const totalData = response.data
-        commit('SAVE_TOTAL_DATA', totalData)
-      }).catch(error => {
-        console.log(`API: ${error}`)
-      })
+  // loadTotalData ({ commit }) {
+  //   Vue.axios.get('https://corona.lmao.ninja/v2/all')
+  //     .then(response => {
+  //       const totalData = response.data
+  //       commit('SAVE_TOTAL_DATA', totalData)
+  //     }).catch(error => {
+  //       console.log(`API: ${error}`)
+  //     })
+  // },
+
+  async loadTotalData ({ commit }) {
+    const { data } = await axios.get('https://corona.lmao.ninja/v2/all')
+    const totalData = data
+    commit('SAVE_TOTAL_DATA', totalData)
+    return data
   }
 }

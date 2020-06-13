@@ -93,7 +93,7 @@ export default {
 <style lang="scss">
   .map {
     background-color: #333;
-    max-width: 64.8%;
+    max-width: 100%;
     height: 350px;
     // margin-top: 5px;
     margin-top: 66px;

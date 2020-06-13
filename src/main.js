@@ -13,7 +13,7 @@ import store from './store'
 import { Icon } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 
-// Importing echarts plugin
+// Importing apexcharts plugin
 import '@/plugins/apexcharts'
 
 import './assets/scss/index.scss'

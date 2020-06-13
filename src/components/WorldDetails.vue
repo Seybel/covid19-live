@@ -1,11 +1,11 @@
 <template>
-  <div class="world-details text-center md-layout " v-if="typeof totalConfirmedData != 'undefined'">
-      <ul class="showHide ">
+  <div class="world-details text-center md-layout ">
+      <ul style="display: inline-flex" class="showHide ">
         <div class="md-layout-item ">
-          <div id="odometer" class="my-odometer">0</div> <br/>
-          <div id="odometer" class="a-test">12</div>
+          <!-- <div id="odometer" class="my-odometer">0</div> <br/> -->
+          <div id="odometer" class="a-test">0</div>
           <li><span class="wd-details-title"> Confirmed</span></li>
-          <li><span class="wd-details-text ggg">{{ totalConfirmedData.cases | formatNumber }}</span></li>
+          <li><span class="my-odometer wd-details-text ggg">0</span></li>
         </div>
         <div class="md-layout-item">
           <li><span class="wd-details-title">Recovered</span></li>
@@ -20,73 +20,45 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import numeral from 'numeral'
 import Odometer from 'odometer'
-// import NumberTransition from 'vue-number-transition'
 
 export default {
-  data () {
-    return {
-      st: 0
-    }
-  },
-  // directives: {
-  //   // ..
-  //   NumberTransition
-  //   // ..
+  // watch: {
+  //   totalConfirmedData: {
+  //     handler (newValue) {
+  //       if (newValue) {
+  //         // console.log(`yay: ${newValue.cases}`)
+  //         return newValue
+  //       }
+  //     }
+  //   },
+  //   deep: true,
+  //   immediate: true
   // },
-  watch: {
-    // immediate: true,
-    // deep: true,
-    // test (newValue) {
-    //   alert(`yes, computed property changed: ${newValue}`)
-    //   return newValue
-    // }
-    // totalConfirmedData: {
-    //   handler (newValue) {
-    //     if (newValue) {
-    //       console.log(`yay: ${newValue}`)
-    //       // return newValue
-    //     }
-    //   }
-    // }
-  },
   computed: {
     ...mapState([
       'totalConfirmedData'
-    ]),
-    test () {
-      const that = this
-      var ab = numeral(that.totalConfirmedData.cases)
-      var ba = ab.value()
-      console.log(ba)
-      // var myNumeral2 = numeral('1,000')
-      // var value2 = myNumeral2.value()
-      return ba
-    }
+    ])
+    // test () {
+    //   const that = this
+    //   var ab = that.totalConfirmedData
+    //   // console.log(ab)
+    //   return ab
+    // }
   },
   filters: {
     formatNumber: function (value) {
       return numeral(value).format('0,0') // Format number
     }
   },
-  // methods: {
-  //   // testB (x) {
-  //   //   return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')
-  //   // },
-  //   // testimony (value) {
-  //   //   return numeral(value).format('0,0') // Format number
-  //   // }
-  //   ...mapActions([
-  //     'loadTotalData'
-  //   ])
-  // },
-  async mounted () {
-    // var t = await this.totalConfirmedData
-    console.log(this.$store.dispatch('loadTotalData'))
-    this.$store.dispatch('loadTotalData')
-      .then(() => {
+  methods: {
+    async loadData () {
+      try {
+        const res = await this.loadTotalData()
+        console.log({ res })
+        // console.log(this.totalConfirmedData)
         const myOdometer = document.querySelector('.my-odometer')
         const myOdometerB = document.querySelector('.a-test')
 
@@ -100,17 +72,39 @@ export default {
           animation: 'count',
           duration: 3000
         })
-        // function updateOdometer () {
-        //   return odometer.update(t.cases)
-        // }
-        // setTimeout(updateOdometer, 2000)
 
-        odometer.update(190000)
-        odometerB.update(111111)
-      })
+        odometer.update(res.cases)
+        odometerB.update(res.recovered)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    ...mapActions([
+      'loadTotalData'
+    ])
+  },
+  mounted () {
+    this.loadData()
+
+    // const myOdometer = document.querySelector('.my-odometer')
+    // const myOdometerB = document.querySelector('.a-test')
+
+    // const odometer = new Odometer({
+    //   el: myOdometer,
+    //   animation: 'count',
+    //   duration: 3000
+    // })
+    // const odometerB = new Odometer({
+    //   el: myOdometerB,
+    //   animation: 'count',
+    //   duration: 3000
+    // })
+    // var test = this.res
+    // console.log({ test })
+    // odometer.update(145000)
+    // odometerB.update(111111)
 
     // console.log(t)
-
     // myOdometer.innerHTML = 170000
   }
 }
@@ -153,6 +147,7 @@ export default {
         font-weight: 500;
         line-height: 48px;
         &.ggg {
+          font-family: 'Roboto';
           color: #d32f2f;
         }
         &.hhh {
@@ -183,19 +178,22 @@ export default {
   .world-details{
     position: absolute;
     top: 23%;
-    right: 12%;
+    display: flex;
+    // right: 12%;
     border: none;
     background: none;
+    padding-left: 15px;
+    padding-right: 20px;
    ul {
       li {
         span.wd-details-title {
-          font-size: 20px;
+          font-size: 18px;
           padding-left: 10px;
           padding-right: 11px;
         }
 
         span.wd-details-text {
-          font-size: 18px;
+          font-size: 22px;
           padding-left: 10px;
           padding-right: 11px;
         }
@@ -209,9 +207,9 @@ export default {
     width: 105%;
   }
   .world-details{
-    top: 28%;
-    left: 40%;
-    // background: none;
+    top: 27%;
+    left: 46%;
+    background: none;
     // border: none;
    ul {
       li {
@@ -222,7 +220,7 @@ export default {
         }
 
         span.wd-details-text {
-          font-size: 18px;
+          font-size: 28px;
           padding-left: 10px;
           padding-right: 11px;
         }
@@ -258,9 +256,13 @@ export default {
     flex-direction: column;
   }
   .world-details{
-    top:-1%;
-    left: 86%;
+    // background-color: rgb(58, 57, 57);
+    // top:-1%;
+    // left: 86%;
+    z-index: 100;
     ul {
+      display: inline-flex;
+      // flex-direction: column;
       li{
         span.wd-details-title {
         font-size: 16px;
