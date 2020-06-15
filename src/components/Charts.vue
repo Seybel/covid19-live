@@ -8,7 +8,7 @@
     </div>
     <div class="chart-inner-wrapper2">
       <h3>Total Recovered Cases Daily</h3>
-        <apexchart  title="title.text2" type="radar" :options="options" :series="seriesB"></apexchart>
+        <apexchart type="radar" :options="options" :series="seriesB"></apexchart>
     </div>
     <!-- <div class="md-layout-item">
       <div class="chart-inner-wrapper3">

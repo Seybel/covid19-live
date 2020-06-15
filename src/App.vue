@@ -8,11 +8,11 @@
 export default {
   // methods: {
   //   ...mapActions([
-  //     'loadData'
+  //     'loadCountriesData'
   //   ])
   // },
   created () {
-    this.$store.dispatch('loadData')
+    this.$store.dispatch('loadCountriesData')
     this.$store.dispatch('loadTotalData')
   }
 }
