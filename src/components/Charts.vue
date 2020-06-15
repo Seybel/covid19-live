@@ -8,7 +8,7 @@
     </div>
     <div class="chart-inner-wrapper2">
       <h3>Total Recovered Cases Daily</h3>
-        <apexchart  title="title.text2" type="radar" :options="options" :series="seriesB"></apexchart>
+        <apexchart type="radar" :options="options" :series="seriesB"></apexchart>
     </div>
     <!-- <div class="md-layout-item">
       <div class="chart-inner-wrapper3">
@@ -192,35 +192,18 @@ h3 {
   margin-left: 20px;
   padding: 15px 30px 10px 20px;
 }
-// .chart-inner-wrapper3 {
-//     background-color: $charts-bg-color;
-//     border: 1px solid #333;
-//     padding: 15px 30px 15px 20px;
-//     max-width: 480px;
-//     margin-top: 10px;
-//     margin-left: 180px;
-//     // margin-right: 180px;
-// }
-
-// .chart-inner-wrapper4 {
-//     background-color: $charts-bg-color;
-//     border: 1px solid #333;
-//     padding: 15px 30px 15px 20px;
-//     max-width: 480px;
-//     margin-top: 10px;
-// }
 
 @media screen and (max-width: 600px) {
   .md-layout {
     margin-top: 160px;
   }
   .chart-inner-wrapper {
-    padding: 10px 10px 0px 5px;
-    margin: 10px 20px 20px;
+    padding: 5px 10px 0px 5px;
+    margin: -30px 20px 10px;
   }
   .chart-inner-wrapper2 {
-    padding: 10px 10px 0px 5px;
-    margin: 15px 20px 20px;
+    padding: 5px 10px 0px 5px;
+    margin: 5px 20px 10px;
   }
 }
 @media screen and (min-width: 768px) {
@@ -229,11 +212,11 @@ h3 {
   }
   .chart-inner-wrapper {
     width: 430px;
-    margin: 15px 0px 10px 300px;
+    margin: -20px 0px 10px 300px;
   }
   .chart-inner-wrapper2 {
     width: 430px;
-    margin: 15px 0px 10px 300px;
+    margin: 0px 0px 10px 300px;
   }
 }
 @media screen and (min-width: 1024px) {

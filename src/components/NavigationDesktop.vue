@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 import numeral from 'numeral'
 // import { eventBus } from '@/main'
 export default {
@@ -42,15 +42,30 @@ export default {
     ])
   },
   methods: {
+    async loadCountry () {
+      const res = await this.loadCountriesData()
+      const getCovidData = res
+      const sortByCases = getCovidData.sort((a, b) => {
+        return b.cases - a.cases
+      })
+      console.log(sortByCases)
+      // return sortByCases
+    },
     // selectedCountry (index) {
     //   const payLoad = this.getSortedData[index]
     //   eventBus.$emit('selectedCountry', payLoad)
-    // }
+    // },
+    ...mapActions([
+      'loadCountriesData'
+    ])
   },
   filters: {
     formatNumber: function (value) {
       return numeral(value).format('0,0') // Format number
     }
+  },
+  mounted () {
+    this.loadCountry()
   }
 }
 </script>

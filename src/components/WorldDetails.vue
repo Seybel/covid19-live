@@ -1,117 +1,77 @@
 <template>
-  <div class="world-details text-center md-layout " v-if="typeof totalConfirmedData != 'undefined'">
-      <ul class="showHide ">
-        <div class="md-layout-item ">
-          <div id="odometer" class="my-odometer">0</div> <br/>
-          <div id="odometer" class="a-test">12</div>
+  <div class="world-details text-center md-layout ">
+      <ul class="test showHide ">
+        <div class="md-layout-item">
           <li><span class="wd-details-title"> Confirmed</span></li>
-          <li><span class="wd-details-text ggg">{{ totalConfirmedData.cases | formatNumber }}</span></li>
+          <li><span class="first-odometer wd-details-text ggg">0</span></li>
         </div>
         <div class="md-layout-item">
           <li><span class="wd-details-title">Recovered</span></li>
-          <li><span class="wd-details-text hhh">{{ totalConfirmedData.recovered | formatNumber }}</span></li>
+          <li><span class="second-odometer wd-details-text hhh">0</span></li>
         </div>
         <div class="md-layout-item ">
           <li><span class="wd-details-title">Deaths</span></li>
-          <li><span class="wd-details-text">{{ totalConfirmedData.deaths | formatNumber }}</span></li>
+          <li><span class="third-odometer wd-details-text iii">0</span></li>
         </div>
       </ul>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import numeral from 'numeral'
+import { mapState, mapActions } from 'vuex'
+// import numeral from 'numeral'
 import Odometer from 'odometer'
-// import NumberTransition from 'vue-number-transition'
 
 export default {
-  data () {
-    return {
-      st: 0
-    }
-  },
-  // directives: {
-  //   // ..
-  //   NumberTransition
-  //   // ..
-  // },
-  watch: {
-    // immediate: true,
-    // deep: true,
-    // test (newValue) {
-    //   alert(`yes, computed property changed: ${newValue}`)
-    //   return newValue
-    // }
-    // totalConfirmedData: {
-    //   handler (newValue) {
-    //     if (newValue) {
-    //       console.log(`yay: ${newValue}`)
-    //       // return newValue
-    //     }
-    //   }
-    // }
-  },
   computed: {
     ...mapState([
       'totalConfirmedData'
-    ]),
-    test () {
-      const that = this
-      var ab = numeral(that.totalConfirmedData.cases)
-      var ba = ab.value()
-      console.log(ba)
-      // var myNumeral2 = numeral('1,000')
-      // var value2 = myNumeral2.value()
-      return ba
-    }
+    ])
   },
-  filters: {
-    formatNumber: function (value) {
-      return numeral(value).format('0,0') // Format number
-    }
-  },
-  // methods: {
-  //   // testB (x) {
-  //   //   return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',')
-  //   // },
-  //   // testimony (value) {
-  //   //   return numeral(value).format('0,0') // Format number
-  //   // }
-  //   ...mapActions([
-  //     'loadTotalData'
-  //   ])
+  // filters: {
+  //   formatNumber: function (value) {
+  //     return numeral(value).format('0,0') // Format number
+  //   }
   // },
-  async mounted () {
-    // var t = await this.totalConfirmedData
-    console.log(this.$store.dispatch('loadTotalData'))
-    this.$store.dispatch('loadTotalData')
-      .then(() => {
-        const myOdometer = document.querySelector('.my-odometer')
-        const myOdometerB = document.querySelector('.a-test')
+  methods: {
+    async loadData () {
+      try {
+        const res = await this.loadTotalData()
+        console.log({ res })
+        // console.log(this.totalConfirmedData)
+        const myOd1 = document.querySelector('.first-odometer')
+        const myOd2 = document.querySelector('.second-odometer')
+        const myOd3 = document.querySelector('.third-odometer')
 
-        const odometer = new Odometer({
-          el: myOdometer,
+        const od1 = new Odometer({
+          el: myOd1,
           animation: 'count',
-          duration: 3000
+          duration: 2000
         })
-        const odometerB = new Odometer({
-          el: myOdometerB,
+        const od2 = new Odometer({
+          el: myOd2,
           animation: 'count',
-          duration: 3000
+          duration: 2000
         })
-        // function updateOdometer () {
-        //   return odometer.update(t.cases)
-        // }
-        // setTimeout(updateOdometer, 2000)
+        const od3 = new Odometer({
+          el: myOd3,
+          animation: 'count',
+          duration: 2000
+        })
 
-        odometer.update(190000)
-        odometerB.update(111111)
-      })
-
-    // console.log(t)
-
-    // myOdometer.innerHTML = 170000
+        od1.update(res.cases)
+        od2.update(res.recovered)
+        od3.update(res.deaths)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    ...mapActions([
+      'loadTotalData'
+    ])
+  },
+  mounted () {
+    this.loadData()
   }
 }
 </script>
@@ -133,7 +93,7 @@ export default {
   ul {
     list-style: none;
     padding-left: 5px;
-    padding-right: 30px;
+    padding-right: 40px;
     margin: 5px 0;
 
     li {
@@ -148,15 +108,21 @@ export default {
       }
 
       span.wd-details-text {
-        color: #fff;
-        font-size: 36px;
+        font-family: "Roboto", "Noto Sans",  sans-serif;
+        font-size: 23px;
         font-weight: 500;
-        line-height: 48px;
+        line-height: 32px;
         &.ggg {
+          font-size: 23px;
           color: #d32f2f;
         }
         &.hhh {
+          font-size: 23px;
           color: #6ba476;
+        }
+        &.iii {
+          font-size: 23px;
+          color: #fff;
         }
       }
     }
@@ -183,21 +149,37 @@ export default {
   .world-details{
     position: absolute;
     top: 23%;
-    right: 12%;
+    display: flex;
+    // right: 12%;
     border: none;
     background: none;
+    padding-left: 15px;
+    padding-right: 20px;
    ul {
       li {
         span.wd-details-title {
-          font-size: 20px;
+          font-size: 18px;
           padding-left: 10px;
           padding-right: 11px;
         }
 
         span.wd-details-text {
-          font-size: 18px;
-          padding-left: 10px;
-          padding-right: 11px;
+        font-family: "Roboto", "Noto Sans",  sans-serif;
+        font-size: 19px;
+        // padding-left: 3px;
+        // padding-right: 5px;
+          &.ggg {
+            font-size: 19px;
+            color: #d32f2f;
+          }
+          &.hhh {
+            font-size: 19px;
+            color: #6ba476;
+          }
+          &.iii {
+            font-size: 19px;
+            color: #fff;
+          }
         }
       }
     }
@@ -209,9 +191,9 @@ export default {
     width: 105%;
   }
   .world-details{
-    top: 28%;
-    left: 40%;
-    // background: none;
+    top: 27%;
+    left: 46%;
+    background: none;
     // border: none;
    ul {
       li {
@@ -222,9 +204,20 @@ export default {
         }
 
         span.wd-details-text {
-          font-size: 18px;
-          padding-left: 10px;
-          padding-right: 11px;
+        font-family: "Roboto", "Noto Sans",  sans-serif;
+        font-size: 20px;
+          &.ggg {
+            font-size: 20px;
+            color: #d32f2f;
+          }
+          &.hhh {
+            font-size: 20px;
+            color: #6ba476;
+          }
+          &.iii {
+            font-size: 20px;
+            color: #fff;
+          }
         }
       }
     }
@@ -258,16 +251,36 @@ export default {
     flex-direction: column;
   }
   .world-details{
-    top:-1%;
-    left: 86%;
+    // background-color: rgb(58, 57, 57);
     ul {
+       &.test {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      margin-top: 30px;
+    }
       li{
         span.wd-details-title {
-        font-size: 16px;
+        font-size: 26px;
+        margin-left: 10px;
+        margin-right: 10px;
       }
-      span.wd-details-text {
-        font-size: 28px;
-      }
+        span.wd-details-text {
+        font-family: "Roboto", "Noto Sans",  sans-serif;
+        font-size: 20px;
+          &.ggg {
+            font-size: 25px;
+            color: #d32f2f;
+          }
+          &.hhh {
+            font-size: 25px;
+            color: #6ba476;
+          }
+          &.iii {
+            font-size: 25px;
+            color: #fff;
+          }
+        }
       }
     }
   }
