@@ -37,7 +37,7 @@ export default {
     async loadData () {
       try {
         const res = await this.loadTotalData()
-        console.log({ res })
+        // console.log({ res })
         // console.log(this.totalConfirmedData)
         const myOd1 = document.querySelector('.first-odometer')
         const myOd2 = document.querySelector('.second-odometer')

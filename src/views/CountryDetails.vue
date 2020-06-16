@@ -16,19 +16,19 @@
       </div>
       <div class="md-layout-item md-size-20">
         <h3 class="Confirmed">Confirmed</h3>
-        <p class="value cases">{{$route.params.cases | formatNumber}}</p>
+        <p class="first-odometer value cases">0</p>
       </div>
       <div class="md-layout-item md-size-20">
           <h3 class="Deaths">Deaths</h3>
-          <p class="value deaths">{{$route.params.deaths | formatNumber}}</p>
+          <p class="second-odometer value deaths">0</p>
       </div>
       <div class="md-layout-item md-size-20">
           <h3 class="Recovered">Recovered</h3>
-          <p class="value recovered">{{$route.params.recovered | formatNumber}}</p>
+          <p class="third-odometer value recovered">0</p>
       </div>
       <div class="md-layout-item md-size-20">
           <h3 class="Tested">Tested</h3>
-          <p class="value tests">{{$route.params.tests | formatNumber}}</p>
+          <p class="fourth-odometer value tests">0</p>
       </div>
     </div>
 
@@ -42,7 +42,8 @@
 </template>
 
 <script>
-import numeral from 'numeral'
+// import numeral from 'numeral'
+import Odometer from 'odometer'
 // import { eventBus } from '@/main'
 
 export default {
@@ -88,15 +89,9 @@ export default {
             options: {
               chart: {
                 align: 'center',
-                verticalAlign: 'middle',
-                width: '250px',
-                height: '200px'
-              },
-              grid: {
-                padding: {
-                  // right: 10,
-                  left: 15
-                }
+                // verticalAlign: 'middle',
+                width: '350px',
+                height: '250px'
               }
             }
           }
@@ -121,15 +116,51 @@ export default {
       ]
     }
   },
-  filters: {
-    formatNumber: function (value) {
-      return numeral(value).format('0,0') // Format number
+  methods: {
+    updateOd () {
+      const myOd1 = document.querySelector('.first-odometer')
+      const myOd2 = document.querySelector('.second-odometer')
+      const myOd3 = document.querySelector('.third-odometer')
+      const myOd4 = document.querySelector('.fourth-odometer')
+
+      const od1 = new Odometer({
+        el: myOd1,
+        animation: 'count',
+        duration: 1500
+      })
+      const od2 = new Odometer({
+        el: myOd2,
+        animation: 'count',
+        duration: 1500
+      })
+      const od3 = new Odometer({
+        el: myOd3,
+        animation: 'count',
+        duration: 1500
+      })
+      const od4 = new Odometer({
+        el: myOd4,
+        animation: 'count',
+        duration: 1500
+      })
+
+      od1.update(this.$route.params.cases)
+      od2.update(this.$route.params.deaths)
+      od3.update(this.$route.params.recovered)
+      od4.update(this.$route.params.tests)
     }
   },
+  // filters: {
+  //   formatNumber: function (value) {
+  //     return numeral(value).format('0,0') // Format number
+  //   }
+  // },
   mounted () {
+    this.updateOd()
     const casesType = this.$route.params
     // push series (confirmed, deaths, recovered, and active)
     this.series[0].data.push(casesType.cases, casesType.deaths, casesType.recovered, casesType.active)
+
     // eventBus.$on('selectedCountry', (payLoad) => {
     //   this.country = payLoad
 
