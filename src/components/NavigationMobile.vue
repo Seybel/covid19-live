@@ -24,9 +24,9 @@
                 tests: getSortedData[index].tests,
                 active:getSortedData[index].active}}">
                 <div class="md-list-item-text">
-                  <span><span class="cd-no">{{ getSortedDataItem.cases | formatNumber }} </span><span class="cd-name">{{ getSortedDataItem.country }}</span></span>
-                  <span>Deaths: {{ getSortedDataItem.deaths | formatNumber }}</span>
-                  <span>Recovered: {{ getSortedDataItem.recovered | formatNumber }}</span>
+                  <span><span class="cd-no">{{ new Intl.NumberFormat().format(getSortedDataItem.cases) }} </span><span class="cd-name">{{ getSortedDataItem.country }}</span></span>
+                  <span>Deaths: {{ new Intl.NumberFormat().format(getSortedDataItem.deaths) }}</span>
+                  <span>Recovered: {{ new Intl.NumberFormat().format(getSortedDataItem.recovered) }}</span>
                 </div>
               </md-list-item>
             </md-list>
@@ -39,7 +39,7 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import numeral from 'numeral'
+// import numeral from 'numeral'
 // import { eventBus } from '@/main'
 import Searchbox from '@/components/Searchbox'
 export default {
@@ -62,12 +62,12 @@ export default {
     ...mapGetters([
       'getSortedData'
     ])
-  },
-  filters: {
-    formatNumber: function (value) {
-      return numeral(value).format('0,0') // Format number
-    }
   }
+  // filters: {
+  //   formatNumber: function (value) {
+  //     return numeral(value).format('0,0') // Format number
+  //   }
+  // }
 }
 </script>
 

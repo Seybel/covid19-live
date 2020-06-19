@@ -12,7 +12,6 @@
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "leaflet": "^1.6.0",
-    "numeral": "^2.0.6",
     "odometer": "^0.4.8",
     "vue": "^2.6.11",
     "vue-apexcharts": "^1.5.3",
