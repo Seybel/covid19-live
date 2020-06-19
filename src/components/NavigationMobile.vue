@@ -8,7 +8,7 @@
         <div class="md-toolbar-section-end">
           <Searchbox />
           <md-button class="md-icon-button">
-              <md-icon><i class="fa fa-github"></i></md-icon>
+          <a href="https://github.com/Seybel/covid19-live"><md-icon><i class="fa fa-github"></i></md-icon></a>
           </md-button>
         </div>
     </md-toolbar>
@@ -73,6 +73,10 @@ export default {
 
 <style lang="scss">
 @import '../assets/scss/index.scss';
+.md-button a:hover{
+  text-decoration: none;
+  color: #fff;
+}
   .md-title{
     color: $white;
     text-decoration: none;
@@ -120,6 +124,9 @@ export default {
 // MOBILE STYLE
 
 /* Desktop, Mobile */
+@media screen and (min-width: 601px){
+  .md-toolbar{position: fixed;}
+}
 @media screen and (min-width: 768px) {
   .showHide  { display: $display-flex; }
   .showHideToolbarMobile  { display: none; }
