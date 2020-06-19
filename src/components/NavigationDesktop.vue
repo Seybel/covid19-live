@@ -3,6 +3,25 @@
     <div class="main-nav-container md-xsmall-hide">
       <md-content class="main-nav md-scrollbar md-theme-default">
         <div class="main-nav-content">
+            <!-- <div v-if="sortCases.length > 0">
+              <div class="main-nav-level" v-for="(caseObj, index) in sortCases" :key="index">
+                <md-list id="countryList">
+                  <md-list-item :to="{name: 'CountryDetails', params: {country: sortCases[index].country,
+                  cases: sortCases[index].cases,
+                  deaths: sortCases[index].deaths,
+                  recovered: sortCases[index].recovered,
+                  tests: sortCases[index].tests,
+                  active:sortCases[index].active}}">
+                    <md-list-item-text>
+                      <span id="cd-no" :class="[`cases${sortCases.indexOf(caseObj)}`]">0</span><span id="cd-name"> {{ caseObj.country }}</span>
+                      <p>Deaths: <span id="d-no" :class="[`death${sortCases.indexOf(caseObj)}`]">0</span></p>
+                      <span>Recovered: <span id="r-no" :class="[`confirmed${sortCases.indexOf(caseObj)}`]">0</span></span>
+                    </md-list-item-text>
+                  </md-list-item>
+                </md-list>
+              </div>
+            </div> -->
+
           <div class="main-nav-level" v-for="(getSortedDataItem, index) in getSortedData" :key="index">
             <div v-if="getSortedData. length" class="country-details">
               <md-list id="countryList">
@@ -13,10 +32,9 @@
                   tests: getSortedData[index].tests,
                   active:getSortedData[index].active}}">
                   <div class="md-list-item-text">
-                    <!-- <span>{{ getCases }}</span> -->
-                    <span><span class="cd-no">{{ getSortedDataItem.cases | formatNumber }} </span><span class="cd-name">{{ getSortedDataItem.country }}</span></span>
-                    <span>Deaths: {{ getSortedDataItem.deaths | formatNumber }}</span>
-                    <span>Recovered: {{ getSortedDataItem.recovered | formatNumber }}</span>
+                    <span><span class="cd-no">{{ new Intl.NumberFormat().format(getSortedDataItem.cases) }} </span><span class="cd-name">{{ getSortedDataItem.country }}</span></span>
+                    <span>Deaths: {{ new Intl.NumberFormat().format(getSortedDataItem.deaths) }}</span>
+                    <span>Recovered: {{ new Intl.NumberFormat().format(getSortedDataItem.recovered) }}</span>
                   </div>
                 </md-list-item>
               </md-list>
@@ -29,10 +47,16 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex'
-import numeral from 'numeral'
+import { mapState, mapGetters } from 'vuex'
+// import numeral from 'numeral'
+// import Odometer from 'odometer'
 // import { eventBus } from '@/main'
 export default {
+  data () {
+    return {
+      sortCases: []
+    }
+  },
   computed: {
     ...mapState([
       'covidData'
@@ -40,33 +64,65 @@ export default {
     ...mapGetters([
       'getSortedData'
     ])
-  },
-  methods: {
-    async loadCountry () {
-      const res = await this.loadCountriesData()
-      const getCovidData = res
-      const sortByCases = getCovidData.sort((a, b) => {
-        return b.cases - a.cases
-      })
-      console.log(sortByCases)
-      // return sortByCases
-    },
-    // selectedCountry (index) {
-    //   const payLoad = this.getSortedData[index]
-    //   eventBus.$emit('selectedCountry', payLoad)
-    // },
-    ...mapActions([
-      'loadCountriesData'
-    ])
-  },
-  filters: {
-    formatNumber: function (value) {
-      return numeral(value).format('0,0') // Format number
-    }
-  },
-  mounted () {
-    this.loadCountry()
   }
+  // methods: {
+  //   async loadCountry () {
+  //     try {
+  //       const getCovidData = await this.loadCountriesData()
+  //       const sortByCases = getCovidData.sort((a, b) => {
+  //         return b.cases - a.cases
+  //       })
+  //       // console.log(sortByCases)
+  //       // Pass the sorted object data to this.sortCases
+  //       this.sortCases = sortByCases
+  //       // console.log(this.sortCases[0].cases)
+  //     } catch (error) {
+  //       console.error(error)
+  //     }
+  //   },
+  //   loopCases () {
+  //     const cases = this.sortCases
+  //     // case01`
+  //     cases.map(covidDataObj => {
+  //       const casesClass = document.querySelector(`.cases${cases.indexOf(covidDataObj)}`)
+  //       const deathClass = document.querySelector(`.death${cases.indexOf(covidDataObj)}`)
+  //       const recoveredClass = document.querySelector(`.confirmed${cases.indexOf(covidDataObj)}`)
+
+  //       const confirmedCases = new Odometer({
+  //         el: casesClass,
+  //         animation: 'count',
+  //         duration: 2000
+  //       })
+  //       const deaths = new Odometer({
+  //         el: deathClass,
+  //         animation: 'count',
+  //         duration: 2000
+  //       })
+  //       const recovered = new Odometer({
+  //         el: recoveredClass,
+  //         animation: 'count',
+  //         duration: 2000
+  //       })
+  //       confirmedCases.update(covidDataObj.cases)
+  //       deaths.update(covidDataObj.deaths)
+  //       recovered.update(covidDataObj.recovered)
+  //     })
+  //   },
+  //   ...mapActions([
+  //     'loadCountriesData'
+  //   ])
+  // },
+  // filters: {
+  //   formatNumber: function (value) {
+  //     return numeral(value).format('0,0') // Format number
+  //   }
+  // },
+  // created () {
+  //   this.loadCountry()
+  // },
+  // updated () {
+  //   this.loopCases()
+  // }
 }
 </script>
 
