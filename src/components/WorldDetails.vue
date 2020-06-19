@@ -285,4 +285,18 @@ export default {
     }
   }
 }
+@media screen and (min-width:1366px){
+  // .showHide {
+  //   display: flex;
+  //   flex-direction: column;
+  // }
+  .world-details{
+    // background-color: rgb(58, 57, 57);
+    ul {
+        &.test {
+        margin-top: 150px;
+      }
+    }
+  }
+}
 </style>

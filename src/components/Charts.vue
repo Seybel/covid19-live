@@ -189,6 +189,7 @@ h3 {
   border: 1px solid #333;
   border-radius: 5px;
   width: 500px;
+  margin-top: 2px;
   margin-left: 20px;
   padding: 15px 30px 10px 20px;
 }
@@ -234,15 +235,17 @@ h3 {
 }
 @media screen and (min-width: 1366px) {
   .md-layout {
-    margin-top: 20px;
+    margin-top: 150px;
   }
   .chart-inner-wrapper {
     width: 500px;
+    margin-top: 2px;
     margin-left: 295px;
     padding: 15px 30px 15px 20px;
   }
   .chart-inner-wrapper2 {
     width: 500px;
+    margin-top: 2px;
     margin-left: 20px;
     padding: 15px 30px 15px 20px;
   }
