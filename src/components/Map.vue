@@ -112,23 +112,10 @@ export default {
     }
   }
 
-  @media screen and (min-width: 601px) {
-    .map{
-      margin-top: 50px;
-      // margin-left: 5px;
-      max-width: 90%;
-    }
-  }
-
-  @media screen and (min-width: 768px) and (max-width: 1199px) {
+   @media screen and (min-width: 768px) and (max-width: 1199px) {
     .map{
       max-width: 90%;
       margin-top: 50px;
-    }
-  }
-  @media screen and (min-width:1366px) {
-    .map{
-      margin-top: 66px;
     }
   }
 </style>

@@ -5,7 +5,7 @@
       <div class="md-toolbar-section-end">
         <Searchbox />
         <md-button class="md-icon-button">
-          <a href="https://github.com/Seybel/covid19-live"><md-icon><i class="fa fa-github"></i></md-icon></a>
+          <md-icon><i class="fa fa-github"></i></md-icon>
           <md-tooltip md-direction="bottom">Repo</md-tooltip>
         </md-button>
       </div>
@@ -35,11 +35,6 @@ export default {
       color: #fff;
     }
   }
-}
-
-a:hover{
-      text-decoration: none;
-      color: #fff;
 }
 
 // MOBILE STYLE

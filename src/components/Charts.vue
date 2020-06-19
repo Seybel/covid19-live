@@ -206,20 +206,6 @@ h3 {
     margin: 5px 20px 10px;
   }
 }
-@media screen and (min-width: 601px) {
-  .md-layout {
-    margin-top: 160px;
-  }
-  .chart-inner-wrapper {
-    width: 320px;
-    margin: -20px 0px 10px 307px;
-  }
-  .chart-inner-wrapper2 {
-    width: 320px;
-    margin: 0px 0px 10px 307px;
-  }
-}
-
 @media screen and (min-width: 768px) {
   .md-layout {
     margin-top: 160px;
@@ -248,19 +234,18 @@ h3 {
 }
 @media screen and (min-width: 1366px) {
   .md-layout {
-    margin-top: 180px;
+    margin-top: 20px;
   }
   .chart-inner-wrapper {
     width: 500px;
-    margin-top: 2px;
     margin-left: 295px;
     padding: 15px 30px 15px 20px;
   }
   .chart-inner-wrapper2 {
     width: 500px;
-    margin-top: 2px;
     margin-left: 20px;
     padding: 15px 30px 15px 20px;
   }
 }
+
 </style>
