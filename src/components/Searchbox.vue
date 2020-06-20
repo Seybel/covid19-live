@@ -72,6 +72,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/scss/index.scss';
   .md-dialog /deep/.md-dialog-container {
     min-width: 400px;
     padding-bottom: 40px;
@@ -79,19 +80,19 @@ export default {
     font-family: sans-serif;
   }
   .search{
-    display: flex;
+    display: $display-flex;
     flex-direction: column;
     font-family: sans-serif;
     &-header{
       .md-dialog-title{
-        font-size: 16px;
+        font-size: $regular;
       }
       .fa-times{
           bottom: 61%;
-          font-size: 24px;
+          font-size: $xx-big;
           margin-left: 55px;
           cursor: pointer;
-          position: fixed;
+          position: $fixed;
           right: 3%;
           top: 3%;
 
@@ -102,8 +103,8 @@ export default {
        width: 80%;
        border: none;
        background:none;
-       border-bottom: 2px solid grey;
-       color: white;
+       border-bottom: 2px solid $grey;
+       color: $white;
        margin-left: 25px;
        &:focus{
          outline: none;
@@ -117,7 +118,7 @@ export default {
       }
     }
     &-result{
-      border-bottom: 2px solid grey;
+      border-bottom: 2px solid $grey;
       width: 80%;
       margin: 10px 25px;
       padding-left: 8px;

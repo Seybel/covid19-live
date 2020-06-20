@@ -127,11 +127,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/scss/index.scss';
 .md-content {
     max-width: 308px;
     max-height: 100vh;
     overflow: auto;
-    display: block;
+    display: $display-block;
     // padding: 16px;
 }
 
@@ -140,11 +141,11 @@ export default {
     // padding: 24px 16px 112px;
     padding-top: 24px;
     padding-bottom: 0px;
-    display: flex;
+    display: $display-flex;
     align-items: flex-start;
     flex-direction: column;
     overflow: auto;
-    position: fixed;
+    position: $fixed;
     top: 50px;
     bottom: 0;
     left: 0;
@@ -163,21 +164,21 @@ export default {
 .md-list-item-text {
   color: rgba(255, 255, 255, 0.7);
   font-size: 14px;
-  font-weight: 400;
+  font-weight: $regular;
   line-height: 18px;
 
     // cd - country-details
   span.cd-no {
-      color: #d32f2f;
-      font-size: 16px;
-      font-weight: 700;
+      color: $country-cases;
+      font-size: $regular;
+      font-weight: $semi-bold;
       line-height: 19px;
   }
 
   span.cd-name {
-      color: #fff;
-      font-size: 16px;
-      font-weight: 400;
+      color: $white;
+      font-size: $regular;
+      font-weight: $regular;
       line-height: 19px;
   }
 }

@@ -76,14 +76,15 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '../assets/scss/index.scss';
 .showHide {
-  display: flex;
+  display: $display-flex;
   flex-direction: row;
   justify-content: center;
   } // Toggle
 .world-details {
-  background-color: rgb(58, 57, 57);
-  position: absolute;
+  background-color: $charts-bg-color;
+  position: $absolute;
   border-radius: 10px;
   margin-top: 85px;
   padding: 44px 10x 64px 10px;
@@ -97,32 +98,32 @@ export default {
     margin: 5px 0;
 
     li {
-      color: #7d7d7d;
+      color: $wd-details;
       padding-bottom: 10px;
 
       span.wd-details-title {
-        color: #b9b9b9;
+        color: $wd-details-title;
         font-size: 19px;
-        font-weight: 500;
+        font-weight: $medium;
         line-height: 28px;
       }
 
       span.wd-details-text {
         font-family: "Roboto", "Noto Sans",  sans-serif;
         font-size: 23px;
-        font-weight: 500;
+        font-weight: $medium;
         line-height: 32px;
         &.ggg {
           font-size: 23px;
-          color: #d32f2f;
+          color: $country-cases;
         }
         &.hhh {
           font-size: 23px;
-          color: #6ba476;
+          color: $recovered;
         }
         &.iii {
           font-size: 23px;
-          color: #fff;
+          color: $white;
         }
       }
     }
@@ -286,12 +287,7 @@ export default {
   }
 }
 @media screen and (min-width:1366px){
-  // .showHide {
-  //   display: flex;
-  //   flex-direction: column;
-  // }
   .world-details{
-    // background-color: rgb(58, 57, 57);
     ul {
         &.test {
         margin-top: 150px;
