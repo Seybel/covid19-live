@@ -115,7 +115,7 @@ export default {
 }
 
 .showHideToolbarMobile { display: $display-flex; } // Toggle toolbar display on mobile
-.showHideMobile { display: block; } // Toggle drawer display
+.showHideMobile { display: $display-block; } // Toggle drawer display
 
 // MOBILE STYLE
 

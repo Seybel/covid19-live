@@ -177,7 +177,7 @@ h3 {
 }
 .chart-inner-wrapper {
   background-color: $charts-bg-color;
-  border: 1px solid #333;
+  border: 1px solid $black;
   border-radius: 5px;
   width: 500px;
   margin-left: 295px;
@@ -186,7 +186,7 @@ h3 {
 
 .chart-inner-wrapper2 {
   background-color: $charts-bg-color;
-  border: 1px solid #333;
+  border: 1px solid $black;
   border-radius: 5px;
   width: 500px;
   margin-top: 2px;

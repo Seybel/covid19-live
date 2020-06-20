@@ -23,16 +23,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/scss/index.scss';
 .showHide { display: none; } // Toggle toolbar and scrollbar display on desktop
 
 .md-toolbar {
-  position: fixed;
+  position: $fixed;
   overflow-x: hidden;
   .md-title a {
-    color: #fff;
+    color: $white;
     &:hover{
       text-decoration: none;
-      color: #fff;
+      color: $white;
     }
   }
 }
@@ -41,6 +42,6 @@ export default {
 
 /* Desktop, Mobile */
 @media screen and (min-width: 768px) {
-  .showHide  { display: flex; }
+  .showHide  { display: $display-flex; }
 }
 </style>
