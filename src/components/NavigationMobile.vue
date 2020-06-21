@@ -7,7 +7,7 @@
         <router-link to="/"><span class="md-title">Covid19 Live</span></router-link>
         <div class="md-toolbar-section-end">
           <Searchbox />
-          <md-button class="md-icon-button">
+          <md-button href="https://github.com/Seybel/covid19-live" class="md-icon-button">
               <md-icon><i class="fa fa-github"></i></md-icon>
           </md-button>
         </div>
