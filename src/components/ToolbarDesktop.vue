@@ -4,7 +4,7 @@
       <h3 class="md-title"  style="flex: 1"><router-link to="/"> World Confirmed cases</router-link></h3>
       <div class="md-toolbar-section-end">
         <Searchbox />
-        <md-button class="md-icon-button">
+        <md-button href="https://github.com/Seybel/covid19-live" class="md-icon-button">
           <md-icon><i class="fa fa-github"></i></md-icon>
           <md-tooltip md-direction="bottom">Repo</md-tooltip>
         </md-button>
