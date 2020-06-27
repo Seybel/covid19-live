@@ -59,9 +59,9 @@ export default {
       'getSortedData'
     ]),
     filteredData () {
-      if (this.search !== '') {
+      if (this.search.trim() !== '') {
         return this.getSortedData.filter((DataItem) => {
-          const regex = new RegExp(this.search, 'gi')
+          const regex = new RegExp(this.search.trim(), 'gi')
           return DataItem.country.match(regex)
         })
       }

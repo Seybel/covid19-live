@@ -3,7 +3,7 @@
     <md-toolbar class="md-elevation-2 md-elevation-2 showHide">
       <router-link to="/"><h3 class="md-title">Covid19 Live </h3></router-link>
       <div class="md-toolbar-section-end">
-          <md-button class="md-icon-button">
+          <md-button href="https://github.com/Seybel/covid19-live" class="md-icon-button">
             <md-icon><i class="fa fa-github"></i></md-icon>
             <md-tooltip md-direction="bottom">Repo</md-tooltip>
           </md-button>

@@ -194,6 +194,7 @@ h3 {
   padding: 15px 30px 10px 20px;
 }
 
+//------- MOBILE STYLES -------//
 @media screen and (max-width: 600px) {
   .md-layout {
     margin-top: 160px;
@@ -207,6 +208,21 @@ h3 {
     margin: 5px 20px 10px;
   }
 }
+
+@media screen and (min-width:320px) and (max-width:767px) and (orientation:landscape) {
+  .md-layout {
+    margin-top: 160px;
+  }
+  .chart-inner-wrapper {
+    width: 320px;
+    margin: -20px 0px 10px 307px;
+  }
+  .chart-inner-wrapper2 {
+    width: 320px;
+    margin: 0px 0px 10px 307px;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .md-layout {
     margin-top: 160px;
