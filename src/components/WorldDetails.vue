@@ -137,8 +137,6 @@ export default {
   text-align: center;
 }
 
-//-------ODOMETER-------//
-
 // MOBILE STYLE
 
 /* Desktop, Mobile */
@@ -186,6 +184,54 @@ export default {
     }
   }
 }
+
+// ORIENTATION LANDSCAPE
+  @media screen and (min-width:320px) and (max-width:767px) and (orientation:landscape) {
+     .showHide {
+      display: flex;
+      flex-direction: column;
+    }
+    .world-details{
+       top: 28%;
+       left: 51%;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       background: none;
+      ul {
+        &.test {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          margin-top: 40px;
+        }
+        li {
+          span.wd-details-title {
+            font-size: 18px;
+            padding-left: 10px;
+            padding-right: 11px;
+          }
+          span.wd-details-text {
+          font-family: "Roboto", "Noto Sans",  sans-serif;
+          font-size: 20px;
+            &.ggg {
+              font-size: 18px;
+              color: #d32f2f;
+            }
+            &.hhh {
+              font-size: 18px;
+              color: #6ba476;
+            }
+            &.iii {
+              font-size: 18px;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+
 @media screen and (min-width: 768px){
    .showHide  {
     display: flex;

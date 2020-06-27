@@ -73,10 +73,16 @@ export default {
 
 <style lang="scss">
 @import '../assets/scss/index.scss';
-  .md-title{
-    color: $white;
-    text-decoration: none;
-  }
+
+.md-title{
+  color: $white;
+  text-decoration: none;
+}
+
+.md-theme-default a:not(.md-button):hover {
+  text-decoration: none;
+}
+
 .md-list {
   margin: -13px 0 5px 0;
 }
@@ -125,4 +131,12 @@ export default {
   .showHideToolbarMobile  { display: none; }
   .showHideMobile  { display: none; }
 }
+
+// ORIENTATION LANDSCAPE
+  @media screen and (min-width:320px) and (max-width:767px) and (orientation:landscape) {
+    .md-toolbar {
+      position: $fixed;
+      overflow-x: hidden;
+    }
+  }
 </style>

@@ -166,6 +166,7 @@ export default {
   font-size: 14px;
   font-weight: $regular;
   line-height: 18px;
+  padding: 0px 32px 0px 0px;
 
     // cd - country-details
   span.cd-no {
@@ -182,4 +183,13 @@ export default {
       line-height: 19px;
   }
 }
+
+// ORIENTATION LANDSCAPE
+  @media screen and (min-width:320px) and (max-width:767px) and (orientation:landscape) {
+    .main-nav {
+      position: $fixed;
+      transition: .3s cubic-bezier(.4,0,.2,1);
+      transition-property: top;
+    }
+  }
 </style>

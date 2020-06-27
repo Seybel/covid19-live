@@ -112,7 +112,13 @@ export default {
       height: 250px;
     }
   }
-
+  // ORIENTATION LANDSCAPE
+  @media screen and (min-width:320px) and (max-width:767px) and (orientation:landscape) {
+    .map{
+      margin-top: 50px;
+      max-width: 100%;
+    }
+  }
    @media screen and (min-width: 768px) and (max-width: 1199px) {
     .map{
       max-width: 90%;
