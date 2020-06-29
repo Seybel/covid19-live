@@ -1,5 +1,6 @@
 # covid19-live
 Access updated information about the coronavirus disease. 
+
 https://ncov19-live-tracker.netlify.app
 
 ## Data is sourced from:
