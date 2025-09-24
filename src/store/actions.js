@@ -26,14 +26,14 @@ export default {
   // },
 
   async loadCountriesData ({ commit }) {
-    const { data } = await axios.get('https://corona.lmao.ninja/v2/countries')
+    const { data } = await axios.get('https://disease.sh/v3/covid-19/countries')
     const countriesData = data
     commit('SAVE_DATA', countriesData)
     return data
   },
 
   async loadTotalData ({ commit }) {
-    const { data } = await axios.get('https://corona.lmao.ninja/v2/all')
+    const { data } = await axios.get('https://disease.sh/v3/covid-19/all')
     const totalData = data
     commit('SAVE_TOTAL_DATA', totalData)
     return data

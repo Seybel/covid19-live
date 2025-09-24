@@ -106,43 +106,20 @@ export default {
     }]
   }),
   mounted () {
-    axios.get('https://covidapi.info/api/v1/global/count')
+    axios.get('https://disease.sh/v3/covid-19/historical/all?lastdays=7')
       .then(response => {
-        // Return results
-        const myObj = response.data.result
-        // Return last seven properties of myObj
-        const sliced = Object.keys(myObj).slice(-7).reduce((resultA, key) => {
-          resultA[key] = myObj[key]
-          return resultA
-        }, {})
+        // Return results from disease.sh API
+        const { cases, deaths, recovered } = response.data
 
-        // Separate dates from object
-        var allDates = sliced
-        var reportDates = Object.keys(allDates)
-        // console.log(reportDates)
-
+        // Get dates from cases object
+        const reportDates = Object.keys(cases)
         // push report dates
         this.options.xaxis.categories.push(...reportDates)
 
-        // Separate total case, deaths, and recovered
-        var allCasesType = sliced
-        var CasesType = Object.values(allCasesType)
-
-        // Confirmed cases
-        var confirmedCases = CasesType.map((arr) => {
-          return arr.confirmed
-        })
-        // console.log(confirmedCases)
-
-        // Deaths cases
-        var deathCases = CasesType.map((arr) => {
-          return arr.deaths
-        })
-
-        // Recovered cases
-        var recoveredCases = CasesType.map((arr) => {
-          return arr.recovered
-        })
+        // Get values for each metric
+        const confirmedCases = Object.values(cases)
+        const deathCases = Object.values(deaths)
+        const recoveredCases = Object.values(recovered)
         // console.log(CasesType)
 
         // push series (confirmed)

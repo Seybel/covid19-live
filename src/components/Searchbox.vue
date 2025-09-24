@@ -73,7 +73,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../assets/scss/index.scss';
-  .md-dialog /deep/.md-dialog-container {
+  .md-dialog ::v-deep .md-dialog-container {
     min-width: 400px;
     padding-bottom: 40px;
     max-height: 300px;
