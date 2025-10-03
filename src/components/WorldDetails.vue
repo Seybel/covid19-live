@@ -1,19 +1,19 @@
 <template>
-  <div class="world-details text-center md-layout ">
-      <ul class="test showHide ">
-        <div class="md-layout-item">
-          <li><span class="wd-details-title"> Confirmed</span></li>
-          <li><span class="first-odometer wd-details-text ggg">0</span></li>
-        </div>
-        <div class="md-layout-item">
-          <li><span class="wd-details-title">Recovered</span></li>
-          <li><span class="second-odometer wd-details-text hhh">0</span></li>
-        </div>
-        <div class="md-layout-item ">
-          <li><span class="wd-details-title">Deaths</span></li>
-          <li><span class="third-odometer wd-details-text iii">0</span></li>
-        </div>
-      </ul>
+  <div class="world-details text-center md-layout">
+    <ul class="test showHide">
+      <div class="md-layout-item">
+        <li><span class="wd-details-title"> Confirmed</span></li>
+        <li><span class="first-odometer wd-details-text ggg">0</span></li>
+      </div>
+      <div class="md-layout-item">
+        <li><span class="wd-details-title">Recovered</span></li>
+        <li><span class="second-odometer wd-details-text hhh">0</span></li>
+      </div>
+      <div class="md-layout-item">
+        <li><span class="wd-details-title">Deaths</span></li>
+        <li><span class="third-odometer wd-details-text iii">0</span></li>
+      </div>
+    </ul>
   </div>
 </template>
 
@@ -24,9 +24,7 @@ import Odometer from 'odometer'
 
 export default {
   computed: {
-    ...mapState([
-      'totalConfirmedData'
-    ])
+    ...mapState(['totalConfirmedData'])
   },
   // filters: {
   //   formatNumber: function (value) {
@@ -66,9 +64,7 @@ export default {
         console.error(error)
       }
     },
-    ...mapActions([
-      'loadTotalData'
-    ])
+    ...mapActions(['loadTotalData'])
   },
   mounted () {
     this.loadData()
@@ -76,25 +72,27 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '../assets/scss/index.scss';
+@import "../assets/scss/index.scss";
+
 .showHide {
   display: $display-flex;
   flex-direction: row;
   justify-content: center;
-  } // Toggle
+}
+
+// Toggle
 .world-details {
   background-color: $charts-bg-color;
-  position: $absolute;
+  position: absolute;
   border-radius: 10px;
   margin-top: 85px;
-  padding: 44px 10x 64px 10px;
-  right: 5%;
+  padding: 44px 10px 64px 10px;
+  left: 50%;
+  transform: translateX(-50%);
   max-width: 250px;
 
   ul {
     list-style: none;
-    padding-left: 5px;
-    padding-right: 40px;
     margin: 5px 0;
 
     li {
@@ -109,18 +107,21 @@ export default {
       }
 
       span.wd-details-text {
-        font-family: "Roboto", "Noto Sans",  sans-serif;
+        font-family: "Roboto", "Noto Sans", sans-serif;
         font-size: 23px;
         font-weight: $medium;
         line-height: 32px;
+
         &.ggg {
           font-size: 23px;
           color: $country-cases;
         }
+
         &.hhh {
           font-size: 23px;
           color: $recovered;
         }
+
         &.iii {
           font-size: 23px;
           color: $white;
@@ -140,21 +141,23 @@ export default {
 // MOBILE STYLE
 
 /* Desktop, Mobile */
-@media screen and (max-width: 600px){
-  .showHide  {
+@media screen and (max-width: 600px) {
+  .showHide {
     display: flex;
     width: 80%;
   }
-  .world-details{
+
+  .world-details {
     position: absolute;
-    top: 23%;
+    top: 20%;
     display: flex;
     // right: 12%;
     border: none;
     background: none;
     padding-left: 15px;
     padding-right: 20px;
-   ul {
+
+    ul {
       li {
         span.wd-details-title {
           font-size: 18px;
@@ -163,20 +166,23 @@ export default {
         }
 
         span.wd-details-text {
-        font-family: "Roboto", "Noto Sans",  sans-serif;
-        font-size: 19px;
-        // padding-left: 3px;
-        // padding-right: 5px;
+          font-family: "Roboto", "Noto Sans", sans-serif;
+          font-size: 16px;
+
+          // padding-left: 3px;
+          // padding-right: 5px;
           &.ggg {
-            font-size: 19px;
+            font-size: 16px;
             color: #d32f2f;
           }
+
           &.hhh {
-            font-size: 19px;
+            font-size: 16px;
             color: #6ba476;
           }
+
           &.iii {
-            font-size: 19px;
+            font-size: 16px;
             color: #fff;
           }
         }
@@ -186,63 +192,72 @@ export default {
 }
 
 // ORIENTATION LANDSCAPE
-  @media screen and (min-width:320px) and (max-width:767px) and (orientation:landscape) {
-     .showHide {
-      display: flex;
-      flex-direction: column;
-    }
-    .world-details{
-       top: 28%;
-       left: 51%;
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       background: none;
-      ul {
-        &.test {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-evenly;
-          margin-top: 40px;
+@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+  .showHide {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .world-details {
+    top: 28%;
+    left: 51%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+
+    ul {
+      &.test {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-top: 40px;
+      }
+
+      li {
+        span.wd-details-title {
+          font-size: 18px;
+          padding-left: 10px;
+          padding-right: 11px;
         }
-        li {
-          span.wd-details-title {
-            font-size: 18px;
-            padding-left: 10px;
-            padding-right: 11px;
-          }
-          span.wd-details-text {
-          font-family: "Roboto", "Noto Sans",  sans-serif;
+
+        span.wd-details-text {
+          font-family: "Roboto", "Noto Sans", sans-serif;
           font-size: 20px;
-            &.ggg {
-              font-size: 18px;
-              color: #d32f2f;
-            }
-            &.hhh {
-              font-size: 18px;
-              color: #6ba476;
-            }
-            &.iii {
-              font-size: 18px;
-              color: #fff;
-            }
+
+          &.ggg {
+            font-size: 18px;
+            color: #d32f2f;
+          }
+
+          &.hhh {
+            font-size: 18px;
+            color: #6ba476;
+          }
+
+          &.iii {
+            font-size: 18px;
+            color: #fff;
           }
         }
       }
     }
   }
+}
 
-@media screen and (min-width: 768px){
-   .showHide  {
+@media screen and (min-width: 768px) {
+  .showHide {
     display: flex;
     width: 105%;
   }
-  .world-details{
+
+  .world-details {
     top: 27%;
     left: 46%;
     background: none;
+
     // border: none;
-   ul {
+    ul {
       li {
         span.wd-details-title {
           font-size: 20px;
@@ -251,16 +266,19 @@ export default {
         }
 
         span.wd-details-text {
-        font-family: "Roboto", "Noto Sans",  sans-serif;
-        font-size: 20px;
+          font-family: "Roboto", "Noto Sans", sans-serif;
+          font-size: 20px;
+
           &.ggg {
             font-size: 20px;
             color: #d32f2f;
           }
+
           &.hhh {
             font-size: 20px;
             color: #6ba476;
           }
+
           &.iii {
             font-size: 20px;
             color: #fff;
@@ -270,15 +288,18 @@ export default {
     }
   }
 }
+
 @media screen and (min-width: 1024px) {
-  .showHide  {
+  .showHide {
     display: flex;
     width: 115%;
   }
-  .world-details{
+
+  .world-details {
     position: absolute;
-    top: 23%;
-    left: 30%;
+    top: 20%;
+    left: 50%;
+
     ul {
       li {
         span.wd-details-title {
@@ -292,37 +313,44 @@ export default {
     }
   }
 }
-@media screen and (min-width:1199px){
+
+@media screen and (min-width: 1199px) {
   .showHide {
     display: flex;
     flex-direction: column;
   }
-  .world-details{
+
+  .world-details {
     // background-color: rgb(58, 57, 57);
     ul {
-       &.test {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      margin-top: 30px;
-    }
-      li{
-        span.wd-details-title {
-        font-size: 26px;
-        margin-left: 10px;
-        margin-right: 10px;
+      &.test {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-top: 30px;
       }
+
+      li {
+        span.wd-details-title {
+          font-size: 26px;
+          margin-left: 10px;
+          margin-right: 10px;
+        }
+
         span.wd-details-text {
-        font-family: "Roboto", "Noto Sans",  sans-serif;
-        font-size: 20px;
+          font-family: "Roboto", "Noto Sans", sans-serif;
+          font-size: 20px;
+
           &.ggg {
             font-size: 25px;
             color: #d32f2f;
           }
+
           &.hhh {
             font-size: 25px;
             color: #6ba476;
           }
+
           &.iii {
             font-size: 25px;
             color: #fff;
@@ -332,10 +360,11 @@ export default {
     }
   }
 }
-@media screen and (min-width:1366px){
-  .world-details{
+
+@media screen and (min-width: 1366px) {
+  .world-details {
     ul {
-        &.test {
+      &.test {
         margin-top: 150px;
       }
     }
