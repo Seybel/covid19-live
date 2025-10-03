@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "apexcharts": "3.35.0",
-    "axios": "^0.21.2",
+    "axios": "^0.30.2",
     "core-js": "^3.6.4",
     "leaflet": "^1.6.0",
     "odometer": "^0.4.8",
